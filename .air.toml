@@ -1,0 +1,33 @@
+root = "."
+
+[build]
+  bin = "./build/server"
+  cmd = "go build -o ./build/server ./src/cmd"
+  # delay = 100000
+  exclude_dir = ["tests", "build", "deploy"]
+  exclude_file = []
+  exclude_regex = ["_test.go"]
+  exclude_unchanged = false
+  follow_symlink = false
+  full_bin = ""
+  include_dir = []
+  include_ext = ["go",".env"]
+  kill_delay = "0s"
+  send_interrupt = false
+  stop_on_error = true
+
+[color]
+  app = ""
+  build = "yellow"
+  main = "magenta"
+  runner = "green"
+  watcher = "cyan"
+
+[log]
+  time = false
+
+[misc]
+  clean_on_exit = true
+
+[screen]
+  clear_on_rebuild = true
