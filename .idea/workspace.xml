@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fa38f25d-57c5-4e70-8b7c-1649619f50d7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.air.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.air.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Property Finder Go Bootcamp - Final Project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/propertyfinderHomework.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/dryrun.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/dryrun.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/targets.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/targets.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/server" beforeDir="false" afterPath="$PROJECT_DIR$/build/server" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/application.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/tmp/main" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cmd/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/endpoints/endpoints.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/jwt_config/jwtconfig.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/messages/errors.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/messages/success.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/postgres_config/postgres.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/postgres/connection.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/cart/cart.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/order/order.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/product/product.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/user/entity/entity.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/user/repository/irepository.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/user/repository/repository.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/user/service/iservice.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/user/service/service.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/user/user.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dto/general/general.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fiber/handler/auth_handler/auth.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fiber/router/router.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pkg/jwt/jwt.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pkg/str/str.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pkg/validation/user_info_validation/email.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pkg/validation/user_info_validation/firsname.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pkg/validation/user_info_validation/lastname.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pkg/validation/user_info_validation/password.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pkg/validation/user_info_validation/validate.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tmp/build-errors.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/build-errors.log" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/build-errors.log" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file:///usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2CtlACWhTW6qG12rATo95tdKqJ5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/erdal.cinar"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/internal/api/handler" />
+      <recent name="$PROJECT_DIR$/internal" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="property-finder-case-study" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="property-finder-case-study" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>

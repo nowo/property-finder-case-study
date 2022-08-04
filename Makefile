@@ -2,7 +2,7 @@ test:
 	go test ./...
 
 run:
-	go run ./src/cmd
+	go run ./cmd
 
 docker-build:
 	docker build -t property-finder-go-homework .

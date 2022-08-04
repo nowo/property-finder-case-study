@@ -2,7 +2,7 @@ root = "."
 
 [build]
   bin = "./build/server"
-  cmd = "go build -o ./build/server ./src/cmd"
+  cmd = "go build -o ./build/server ./cmd"
   # delay = 100000
   exclude_dir = ["tests", "build", "deploy"]
   exclude_file = []
