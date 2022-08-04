@@ -20,4 +20,4 @@
 # Sensitive files
 *.env
 # Go workspace file
-go.work
+#go.work
