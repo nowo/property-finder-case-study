@@ -10,4 +10,9 @@ func Start() {
 	fmt.Println("Application started!!!")
 	postgres.Migration(postgres.ConnectDB())
 	router.Router()
+	//err := service_cart.New().AddToCart(1, 1)
+	//if err != nil {
+	//	fmt.Println("erdal12")
+	//	fmt.Println(err)
+	//}
 }

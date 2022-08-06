@@ -33,9 +33,9 @@ func (_jwt *JWT) SetUserId(userId uint) *JWT {
 	return _jwt
 }
 
-func (_jwt *JWT) GetUserId() uint {
+func (_jwt *JWT) GetUserId() float64 {
 	userId := _jwt.DumpClaim["userId"]
-	return userId.(uint)
+	return userId.(float64)
 }
 
 func (_jwt *JWT) GetToken() string {
@@ -46,11 +46,6 @@ func (_jwt *JWT) GetToken() string {
 func (_jwt *JWT) SetToken(token string) *JWT {
 	_jwt.DumpClaim["token"] = token
 	return _jwt
-}
-
-func (_jwt *JWT) GetIsVerified() bool {
-	isVerified := _jwt.DumpClaim["is_verified"]
-	return isVerified.(bool)
 }
 
 func (_jwt *JWT) SetIsVerified(isVerified bool) *JWT {

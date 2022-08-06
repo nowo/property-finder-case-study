@@ -5,47 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa38f25d-57c5-4e70-8b7c-1649619f50d7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.air.toml" beforeDir="false" afterPath="$PROJECT_DIR$/.air.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Property Finder Go Bootcamp - Final Project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/propertyfinderHomework.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/dryrun.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/dryrun.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/domain/product/entity_product/entity_product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vscode/targets.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/targets.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/server" beforeDir="false" afterPath="$PROJECT_DIR$/build/server" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/postgres/connection.go" beforeDir="false" afterPath="$PROJECT_DIR$/database/postgres/connection.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/application.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/tmp/main" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmd/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/endpoints/endpoints.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/jwt_config/jwtconfig.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/messages/errors.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/messages/success.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/postgres_config/postgres.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/postgres/connection.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/cart/cart.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/order/order.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/product/product.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/user/entity/entity.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/user/repository/irepository.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/user/repository/repository.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/user/service/iservice.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/user/service/service.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/user/user.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dto/general/general.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fiber/handler/auth_handler/auth.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fiber/router/router.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pkg/jwt/jwt.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pkg/str/str.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pkg/validation/user_info_validation/email.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pkg/validation/user_info_validation/firsname.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pkg/validation/user_info_validation/lastname.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pkg/validation/user_info_validation/password.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pkg/validation/user_info_validation/validate.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tmp/build-errors.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/.config/endpoints/endpoints.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/.config/endpoints/endpoints.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/.config/messages/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/.config/messages/errors.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/.config/messages/success.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/.config/messages/success.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/handler/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/handler/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/handler/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/handler/product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/middleware/middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/middleware/middleware.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/router/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/application/application.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/application.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/cart/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/cart.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/entity/entity.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/repository/irepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/repository_product/irepository_product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/repository/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/repository_product/repository_product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/service/iservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/service_product/iservice_product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/service/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/service_product/service_product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/entity/entity.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/entity_user/entity_user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/repository/irepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/repository_user/irepository_user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/repository/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/repository_user/repository_user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/service/iservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/service_user/iservice_user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/service/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/service_user/service_user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/jwt/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/jwt/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/validation/user_info_validation/validate.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/validation/user_info_validation/validate.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/build-errors.log" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/build-errors.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,22 +64,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/erdal.cinar"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/erdal.cinar&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/internal/api/handler" />
@@ -121,6 +110,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

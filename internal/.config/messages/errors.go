@@ -13,6 +13,6 @@ var (
 	AUTHORIZED_USER           = errors.New("Authorized user")
 	UNAUTHORIZED_USER         = errors.New("Unauthorized user")
 	INVALID_PASSWORD          = errors.New("Invalid password")
-	LOGIN_SUCCESS             = errors.New("Login success")
 	PRODUCT_NOT_FOUND         = errors.New("Product not found")
+	NOT_ENOUGH_QUANTITY       = errors.New("Not enough quantity")
 )

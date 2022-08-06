@@ -30,10 +30,7 @@ func TokenCanGo(c *fiber.Ctx) error {
 	token := splittedAuthorization[1]
 
 	_jwt := jwt.New().SetToken(token).DecodeToken()
-
-	c.Locals("userId", _jwt.GetUserId())
-	c.Locals("is_verified", _jwt.GetIsVerified())
-
+	c.Locals("userID", _jwt.GetUserId())
 	return c.Next()
 }
 
@@ -48,6 +45,12 @@ func TokenCantGo(c *fiber.Ctx) error {
 			Message: messages.AUTHORIZED_USER.Error(),
 		})
 	}
+
+	return c.Next()
+}
+
+func SetContentTypeJSON(c *fiber.Ctx) error {
+	c.Set("Content-type", "application/json; charset=utf-8")
 
 	return c.Next()
 }

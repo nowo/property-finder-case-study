@@ -1,15 +1,16 @@
-package domain
+package product
 
 import (
+	"property-finder-go-bootcamp-homework/internal/domain/product/entity_product"
+
 	"gorm.io/gorm"
-	"property-finder-go-bootcamp-homework/internal/domain/product/entity"
 )
 
 type Product struct {
 	gorm.Model
-	ProductInfo entity.ProductInfo `json:"product_info" gorm:"embedded;embedded_prefix:product_info_"`
+	ProductInfo entity_product.ProductInfo `json:"product_info" gorm:"embedded;embedded_prefix:product_info_"`
 }
 
-func (product *Product) GetProductInfo() *entity.ProductInfo {
+func (product *Product) GetProductInfo() *entity_product.ProductInfo {
 	return &product.ProductInfo
 }

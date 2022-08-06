@@ -1,12 +1,12 @@
 package postgres
 
 import (
-	"property-finder-go-bootcamp-homework/internal/.config/postgres_config"
-	domain2 "property-finder-go-bootcamp-homework/internal/domain/product"
-	"property-finder-go-bootcamp-homework/internal/domain/user"
-
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"property-finder-go-bootcamp-homework/internal/.config/postgres_config"
+	"property-finder-go-bootcamp-homework/internal/domain/cart"
+	"property-finder-go-bootcamp-homework/internal/domain/product"
+	"property-finder-go-bootcamp-homework/internal/domain/user"
 )
 
 func ConnectDB() *gorm.DB {
@@ -28,5 +28,5 @@ func Disconnect(DB *gorm.DB) {
 }
 
 func Migration(DB *gorm.DB) {
-	DB.AutoMigrate(&domain.User{}, domain2.Product{})
+	DB.AutoMigrate(&user.User{}, &product.Product{}, &cart.Cart{})
 }

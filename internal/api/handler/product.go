@@ -1,16 +1,15 @@
 package handler
 
 import (
-	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"property-finder-go-bootcamp-homework/dto/general"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
-	"property-finder-go-bootcamp-homework/internal/domain/product/service"
+	"property-finder-go-bootcamp-homework/internal/domain/product/service_product"
 	"strconv"
 )
 
 func ListProducts(c *fiber.Ctx) error {
-	productService := service.New()
+	productService := service_product.New()
 	products, err := productService.GetAll()
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(general.Response{
@@ -21,7 +20,7 @@ func ListProducts(c *fiber.Ctx) error {
 	}
 	return c.Status(fiber.StatusOK).JSON(general.Response{
 		Status:  true,
-		Message: "",
+		Message: messages.PRODUCT_LIST_SUCCESS,
 		Data:    products,
 	})
 
@@ -29,29 +28,27 @@ func ListProducts(c *fiber.Ctx) error {
 
 func GetProductByID(c *fiber.Ctx) error {
 	id := c.Query("id")
-	productService := service.New()
-	fmt.Println(id)
-	integerId, err := strconv.Atoi(id)
+	productID, err := strconv.Atoi(id)
 	if err != nil {
-		fmt.Println("str conv error")
-		return c.Status(fiber.StatusInternalServerError).JSON(general.Response{
+		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
-			Message: err.Error(),
+			Message: messages.BAD_REQUEST.Error(),
 			Data:    nil,
 		})
 	}
+	productService := service_product.New()
 
-	product, err := productService.GetByID(integerId)
-	if err != nil {
-		return c.Status(fiber.StatusNotFound).JSON(general.Response{
+	product, getByIDError := productService.GetByID(uint(productID))
+	if getByIDError != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
-			Message: messages.PRODUCT_NOT_FOUND.Error(),
+			Message: getByIDError.Error(),
 			Data:    nil,
 		})
 	}
 	return c.Status(fiber.StatusOK).JSON(general.Response{
 		Status:  true,
-		Message: "",
+		Message: messages.PRODUCT_LIST_SUCCESS,
 		Data:    product,
 	})
 }

@@ -8,14 +8,14 @@ import (
 	"property-finder-go-bootcamp-homework/dto/general"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
 	domain "property-finder-go-bootcamp-homework/internal/domain/user"
-	"property-finder-go-bootcamp-homework/internal/domain/user/entity"
-	"property-finder-go-bootcamp-homework/internal/domain/user/service"
+	"property-finder-go-bootcamp-homework/internal/domain/user/entity_user"
+	"property-finder-go-bootcamp-homework/internal/domain/user/service_user"
 	"property-finder-go-bootcamp-homework/pkg/validation"
 	"property-finder-go-bootcamp-homework/pkg/validation/user_info_validation"
 )
 
 func Register(c *fiber.Ctx) error {
-	var userInfo entity.UserInfo
+	var userInfo entity_user.UserInfo
 
 	encodeError := json.Unmarshal(c.Body(), &userInfo)
 	if encodeError != nil {
@@ -37,7 +37,7 @@ func Register(c *fiber.Ctx) error {
 		})
 	}
 
-	userService := service.New()
+	userService := service_user.New()
 	token, registerError := userService.Register(domain.User{UserInfo: userInfo})
 	if registerError != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(general.Response{
@@ -75,7 +75,7 @@ func Login(c *fiber.Ctx) error {
 		})
 	}
 
-	userService := service.New()
+	userService := service_user.New()
 	token, registerError := userService.Login(userInfo)
 	if registerError != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(general.Response{
@@ -86,7 +86,7 @@ func Login(c *fiber.Ctx) error {
 	}
 	return c.Status(fiber.StatusOK).JSON(general.Response{
 		Status:  true,
-		Message: messages.LOGIN_SUCCESS.Error(),
+		Message: messages.LOGIN_SUCCESS,
 		Data:    token,
 	})
 }
