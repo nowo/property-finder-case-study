@@ -24,6 +24,7 @@ func New() ICartService {
 	return &CartService{
 		CartRepo:    repository_cart.New(),
 		ProductRepo: repository_product.New(),
+		OrderRepo:   repository_order.New(),
 		jwt:         *_jwt.New(),
 	}
 }
@@ -80,23 +81,28 @@ func (c *CartService) CalculatePrice(cartList []product.Product, userID uint) (f
 		vatOfCart += vat
 		totalPrice += product.ProductInfo.Price + vat
 	}
-	//discountAPrice, discountBPrice, discountCPrice, discountAVat, discountBVat, discountCVat := totalPrice, totalPrice, totalPrice, vatOfCart, vatOfCart, vatOfCart
-	//
-	//if c.isUserDeservedForthOrderDiscount(userID, totalPrice) {
-	//	discountAPrice, discountAVat = c.calculateForthOrderDiscount(cartList)
-	//}
-	//discountBPrice, discountBVat = c.moreThanThreeDisountPrice(cartList)
-	////discountCPrice, discountCVat = c.monthlyDiscount(userID, totalPrice, vatOfCart)
-	//
-	//if discountAPrice < discountBPrice {
-	//	if discountAPrice < discountCPrice {
-	//		return discountAPrice, discountAVat, nil
-	//	}
-	//	return discountCPrice, discountCVat, nil
-	//}
-	//if discountBPrice < discountCPrice {
-	//	return discountBPrice, discountBVat, nil
-	//}
+
+	discountAPrice, discountBPrice, discountCPrice, discountAVat, discountBVat, discountCVat := totalPrice, totalPrice, totalPrice, vatOfCart, vatOfCart, vatOfCart
+
+	if c.isUserDeservedForthOrderDiscount(userID, totalPrice) {
+		fmt.Println("User deserve discount")
+		discountAPrice, discountAVat = c.calculateForthOrderDiscount(cartList)
+	}
+	discountBPrice, discountBVat = c.moreThanThreeDisountPrice(cartList)
+	//discountCPrice, discountCVat = c.monthlyDiscount(userID, totalPrice, vatOfCart)
+	fmt.Println(discountAPrice, discountBPrice, discountCPrice)
+	if discountAPrice < discountBPrice {
+		if discountAPrice < discountCPrice {
+			fmt.Println("discountA")
+			return discountAPrice, discountAVat, nil
+		}
+		fmt.Println("discountC")
+		return discountCPrice, discountCVat, nil
+	}
+	if discountBPrice < discountCPrice {
+		fmt.Println("discountB")
+		return discountBPrice, discountBVat, nil
+	}
 
 	return totalPrice, vatOfCart, nil
 }
@@ -125,7 +131,7 @@ func (c *CartService) moreThanThreeDisountPrice(productList []product.Product) (
 	return totalPrice, vatOfCart
 }
 
-func (c *CartService) MonthlyDiscount(userID uint, price float64, vatOfCart float64) (float64, float64) {
+func (c *CartService) monthlyDiscount(userID uint, price float64, vatOfCart float64) (float64, float64) {
 	orders, err := c.OrderRepo.GetOrderFromLastMonth(userID)
 	if err != nil {
 		return price, 0
@@ -144,7 +150,7 @@ func (c *CartService) MonthlyDiscount(userID uint, price float64, vatOfCart floa
 	return price - (price * 0.1), vatOfCart - (vatOfCart * 0.1)
 }
 
-func (c *CartService) IsUserDeservedForthOrderDiscount(userID uint, totalPrice float64) bool {
+func (c *CartService) isUserDeservedForthOrderDiscount(userID uint, totalPrice float64) bool {
 	fmt.Println("isUserDeservedForthOrderDiscount")
 	fmt.Println(userID)
 	orders, err := c.OrderRepo.GetOrderByUserID(userID)
@@ -171,16 +177,12 @@ func (c *CartService) IsUserDeservedForthOrderDiscount(userID uint, totalPrice f
 	}
 	return true
 }
-func (c *CartService) CalculateForthOrderDiscount(productList []product.Product) (float64, float64) {
+func (c *CartService) calculateForthOrderDiscount(productList []product.Product) (float64, float64) {
 	var totalPrice float64 = 0
 	var vatOfCart float64 = 0
 
-	productCountById := make(map[product.Product]int)
-	for _, product := range productList {
-		productCountById[product]++
-	}
-
-	for selectedProduct := range productCountById {
+	fmt.Println(len(productList))
+	for _, selectedProduct := range productList {
 		switch selectedProduct.ProductInfo.Vat {
 		case 1:
 			vat := (selectedProduct.ProductInfo.Price * float64(selectedProduct.ProductInfo.Vat)) / 100
@@ -195,6 +197,7 @@ func (c *CartService) CalculateForthOrderDiscount(productList []product.Product)
 			vatOfCart += vat - vat*0.15
 			totalPrice += (selectedProduct.ProductInfo.Price + vat) - (selectedProduct.ProductInfo.Price+vat)*0.15
 		}
+		fmt.Println("selected price", selectedProduct.ProductInfo.Price)
 	}
 	return totalPrice, vatOfCart
 }

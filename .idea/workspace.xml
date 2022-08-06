@@ -6,20 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fa38f25d-57c5-4e70-8b7c-1649619f50d7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/targets.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/targets.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/server" beforeDir="false" afterPath="$PROJECT_DIR$/build/server" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/postgres/connection.go" beforeDir="false" afterPath="$PROJECT_DIR$/database/postgres/connection.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/.config/endpoints/endpoints.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/.config/endpoints/endpoints.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/.config/messages/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/.config/messages/errors.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/.config/messages/success.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/.config/messages/success.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/handler/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/handler/cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/router/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/repository_cart/irepository_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/repository_cart/irepository_cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/repository_cart/repository_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/repository_cart/repository_cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/iservice_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/iservice_cart.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/order/order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/order.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/order/service_order/service_order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/service_order/service_order.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/build-errors.log" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/build-errors.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

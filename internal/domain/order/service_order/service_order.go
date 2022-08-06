@@ -39,5 +39,7 @@ func (s *OrderService) CreateOrder(userID uint, totalPrice, vatOfCart float64) e
 }
 
 func (s *OrderService) GetOrderByUserID(userID uint) ([]order.Order, error) {
+	fmt.Println("orderlari cekti")
+	fmt.Println("userID: ", userID)
 	return s.OrderRepo.GetOrderByUserID(userID)
 }
