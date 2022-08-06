@@ -10,4 +10,5 @@ type ICartRepository interface {
 	CountByProductID(productID uint) (int64, error)
 	IsAmountExceedByMonth(userID uint) (bool, error)
 	Delete(userID, productID uint) error
+	Complete(userID, OrderID uint) error
 }

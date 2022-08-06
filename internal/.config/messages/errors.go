@@ -15,4 +15,5 @@ var (
 	INVALID_PASSWORD          = errors.New("Invalid password")
 	PRODUCT_NOT_FOUND         = errors.New("Product not found")
 	NOT_ENOUGH_QUANTITY       = errors.New("Not enough quantity")
+	CART_EMPTY                = errors.New("Cart is empty")
 )

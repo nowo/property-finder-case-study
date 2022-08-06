@@ -81,7 +81,9 @@ func ListCart(c *fiber.Ctx) error {
 		})
 	}
 
-	totalPrice, vatOfCart, err := service_cart.New().CalculatePrice(cartList)
+	totalPrice, vatOfCart, err := service_cart.New().CalculatePrice(cartList, uint(userID))
+	fmt.Println("totalPrice", totalPrice)
+	fmt.Println("vatOfCart", vatOfCart)
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,

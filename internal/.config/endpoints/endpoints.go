@@ -10,17 +10,18 @@ var (
 )
 
 const (
-	AUTH_ENDPOINT    = "/auth"
-	CART_ENDPOINT    = "/cart"
-	PRODUCT_ENDPOINT = "/product"
-
+	AUTH_ENDPOINT     = "/auth"
+	CART_ENDPOINT     = "/cart"
+	PRODUCT_ENDPOINT  = "/product"
+	ORDER_ENDPOINT    = "/order"
 	REGISTER_ENDPOINT = "/register"
 	LOGIN_ENDPOINT    = "/login"
 
 	PRODUCTS_ENDPOINT = "/products"
 	DELETE_ENDPOINT   = "/delete"
-
-	API_VERSION = "/api/v1"
-	EMPTY       = "/"
-	PARAMS_ID   = "/:id"
+	CREATE_ENDPOINT   = "/create"
+	LIST_ENDPOINT     = "/list"
+	API_VERSION       = "/api/v1"
+	EMPTY             = "/"
+	PARAMS_ID         = "/:id"
 )

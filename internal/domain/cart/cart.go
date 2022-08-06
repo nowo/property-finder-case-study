@@ -8,8 +8,10 @@ import (
 
 type Cart struct {
 	gorm.Model
-	UserID    uint `json:"user_id"`
-	ProductID uint `json:"product_id"`
+	UserID      uint `json:"user_id"`
+	ProductID   uint `json:"product_id"`
+	OrderID     uint `json:"order_id"`
+	IsCompleted bool `json:"is_completed"`
 }
 
 func NewCart(userID uint, productID uint) *Cart {

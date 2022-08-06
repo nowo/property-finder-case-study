@@ -21,12 +21,11 @@ func (r *CartRepository) GetCartInfoByUserID(userID uint) ([]cart.Cart, error) {
 	defer postgres.Disconnect(db)
 
 	newCart := []cart.Cart{}
-	response := db.Table("carts").Where("user_id = ?", userID).Find(&newCart)
+	response := db.Table("carts").Where("user_id = ?", userID).Where("is_completed", false).Find(&newCart)
 	fmt.Println()
 	if response.Error != nil {
 		return nil, response.Error
 	}
-	fmt.Println("new Cart: ", newCart)
 	return newCart, nil
 }
 
@@ -81,7 +80,21 @@ func (r *CartRepository) Delete(userID, productID uint) error {
 	defer postgres.Disconnect(db)
 
 	deletedCart := cart.Cart{}
-	response := db.Table("carts").Where("user_id = ?", userID).Where("product_id = ?", productID).First(&deletedCart).Unscoped().Delete(&deletedCart)
+	response := db.Table("carts").Where("user_id = ?", userID).Where("product_id = ?", productID).Where("is_completed", false).First(&deletedCart).Unscoped().Delete(&deletedCart)
+	if response.Error != nil {
+		return messages.DATABASE_OPERATION_FAILED
+	}
+
+	return nil
+}
+
+func (r *CartRepository) Complete(userID, orderID uint) error {
+	db := postgres.ConnectDB()
+	defer postgres.Disconnect(db)
+
+	//update if order_id is null
+
+	response := db.Table("carts").Where("user_id = ?", userID).Where("is_completed", false).Update("order_id", orderID).Update("is_completed", true)
 	if response.Error != nil {
 		return messages.DATABASE_OPERATION_FAILED
 	}
