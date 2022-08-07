@@ -1,7 +1,7 @@
 package entity_user
 
 import (
-	"property-finder-go-bootcamp-homework/pkg/str"
+	"property-finder-go-bootcamp-homework/pkg/string_helper"
 	"strings"
 
 	"golang.org/x/crypto/bcrypt"
@@ -23,28 +23,12 @@ func NewUserInfo(firstname, lastname, email, password string) *UserInfo {
 	return userInfo
 }
 
-func (userInfo *UserInfo) GetUserInfoFirstname() string {
-	return userInfo.Firstname
-}
-
-func (userInfo *UserInfo) GetUserInfoLastname() string {
-	return userInfo.Lastname
-}
-
-func (userInfo *UserInfo) GetUserInfoEmail() string {
-	return userInfo.Email
-}
-
-func (userInfo *UserInfo) GetUserInfoPassword() string {
-	return userInfo.Password
-}
-
 func (userInfo *UserInfo) SetUserInfoFirstname(Firstname string) {
-	userInfo.Firstname = str.UpperCaseFirstLetters(Firstname)
+	userInfo.Firstname = string_helper.UpperCaseFirstLetters(Firstname)
 }
 
 func (userInfo *UserInfo) SetUserInfoLastname(Lastname string) {
-	userInfo.Lastname = str.UpperCaseFirstLetters(Lastname)
+	userInfo.Lastname = string_helper.UpperCaseFirstLetters(Lastname)
 }
 
 func (userInfo *UserInfo) SetUserInfoEmail(Email string) {

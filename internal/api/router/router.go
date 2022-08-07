@@ -30,5 +30,8 @@ func Router() {
 	order.Post(_config.CREATE_ENDPOINT, middleware.CanPassWithToken, handler.CreateOrder)
 	order.Get(_config.LIST_ENDPOINT, middleware.CanPassWithToken, handler.ListOrders)
 
-	log.Println(app.Listen(_config.PORT))
+	if _config.PORT == "" {
+		_config.PORT = ":8080"
+	}
+	log.Fatalf("Server error: %v", app.Listen(_config.PORT))
 }

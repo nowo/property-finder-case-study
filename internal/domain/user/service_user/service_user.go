@@ -30,7 +30,7 @@ func (u *UserService) Register(_user user.User) (general.Token, error) {
 		return general.Token{}, errors.NewEmailAlreadyExist(_user.UserInfo.Email)
 	}
 
-	newUser := entity_user.NewUserInfo(_user.GetUserInfo().Firstname, _user.GetUserInfo().Lastname, _user.GetUserInfo().Email, _user.GetUserInfo().Password)
+	newUser := entity_user.NewUserInfo(_user.UserInfo.Firstname, _user.UserInfo.Lastname, _user.UserInfo.Email, _user.UserInfo.Password)
 	createResponse, err := u.Repo.Create(user.User{UserInfo: *newUser})
 
 	if err != nil {
@@ -48,7 +48,7 @@ func (u *UserService) Login(_dto auth.LoginRequest) (general.Token, error) {
 	if err != nil {
 		return general.Token{}, err
 	}
-	if !user.GetUserInfo().ComparePasswords(_dto.Password) {
+	if !user.UserInfo.ComparePasswords(_dto.Password) {
 		return general.Token{}, messages.INVALID_PASSWORD
 	}
 

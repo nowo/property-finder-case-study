@@ -9,6 +9,7 @@ import (
 	"property-finder-go-bootcamp-homework/internal/domain/user"
 	"property-finder-go-bootcamp-homework/internal/domain/user/entity_user"
 	"property-finder-go-bootcamp-homework/internal/domain/user/service_user"
+	"property-finder-go-bootcamp-homework/pkg/logger"
 	"property-finder-go-bootcamp-homework/pkg/validation"
 )
 
@@ -17,6 +18,8 @@ func RegisterUser(c *fiber.Ctx) error {
 
 	encodeError := json.Unmarshal(c.Body(), &userInfo)
 	if encodeError != nil {
+		logger.Errorf(encodeError.Error())
+
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: messages.BAD_REQUEST.Error(),
@@ -26,6 +29,7 @@ func RegisterUser(c *fiber.Ctx) error {
 
 	validationError := validation.Validate(&userInfo)
 	if validationError != nil {
+		logger.Errorf(validationError.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: messages.BAD_REQUEST.Error(),
@@ -39,6 +43,7 @@ func RegisterUser(c *fiber.Ctx) error {
 			UserInfo: userInfo,
 		})
 	if registerError != nil {
+		logger.Errorf(registerError.Error())
 		return c.Status(fiber.StatusInternalServerError).JSON(general.Response{
 			Status:  false,
 			Message: registerError.Error(),
@@ -56,6 +61,7 @@ func Login(c *fiber.Ctx) error {
 	var userInfo auth.LoginRequest
 	encodeError := json.Unmarshal(c.Body(), &userInfo)
 	if encodeError != nil {
+		logger.Errorf(encodeError.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: messages.BAD_REQUEST.Error(),
@@ -65,6 +71,7 @@ func Login(c *fiber.Ctx) error {
 
 	validationError := validation.ValidateLoginRequest(&userInfo)
 	if validationError != nil {
+		logger.Errorf(validationError.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: messages.BAD_REQUEST.Error(),
@@ -75,6 +82,7 @@ func Login(c *fiber.Ctx) error {
 	userService := service_user.New()
 	token, registerError := userService.Login(userInfo)
 	if registerError != nil {
+		logger.Errorf(registerError.Error())
 		return c.Status(fiber.StatusInternalServerError).JSON(general.Response{
 			Status:  false,
 			Message: registerError.Error(),

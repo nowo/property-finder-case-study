@@ -6,6 +6,7 @@ import (
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
 	"property-finder-go-bootcamp-homework/internal/domain/cart/service_cart"
 	"property-finder-go-bootcamp-homework/internal/domain/order/service_order"
+	"property-finder-go-bootcamp-homework/pkg/logger"
 )
 
 func CreateOrder(c *fiber.Ctx) error {
@@ -22,6 +23,7 @@ func CreateOrder(c *fiber.Ctx) error {
 		})
 	}
 	if err != nil {
+		logger.Errorf(err.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: err.Error(),
@@ -32,6 +34,7 @@ func CreateOrder(c *fiber.Ctx) error {
 
 	err = orderService.CreateOrder(uint(userID), totalPrice, vatOfCart)
 	if err != nil {
+		logger.Errorf(err.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: err.Error(),
@@ -50,6 +53,7 @@ func ListOrders(c *fiber.Ctx) error {
 	orderService := service_order.New()
 	orderList, err := orderService.GetOrderByUserID(uint(userID))
 	if err != nil {
+		logger.Errorf(err.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: err.Error(),

@@ -5,6 +5,7 @@ import (
 	"property-finder-go-bootcamp-homework/dto/general"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
 	"property-finder-go-bootcamp-homework/internal/domain/product/service_product"
+	"property-finder-go-bootcamp-homework/pkg/logger"
 	"strconv"
 )
 
@@ -12,6 +13,7 @@ func ListProducts(c *fiber.Ctx) error {
 	productService := service_product.New()
 	products, err := productService.GetAll()
 	if err != nil {
+		logger.Errorf(err.Error())
 		return c.Status(fiber.StatusInternalServerError).JSON(general.Response{
 			Status:  false,
 			Message: err.Error(),
@@ -30,6 +32,7 @@ func GetProductByID(c *fiber.Ctx) error {
 	id := c.Query("id")
 	productID, err := strconv.Atoi(id)
 	if err != nil {
+		logger.Errorf(err.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: messages.BAD_REQUEST.Error(),
@@ -40,6 +43,7 @@ func GetProductByID(c *fiber.Ctx) error {
 
 	product, getByIDError := productService.GetByID(uint(productID))
 	if getByIDError != nil {
+		logger.Errorf(getByIDError.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: getByIDError.Error(),

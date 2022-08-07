@@ -5,7 +5,7 @@ import (
 	"github.com/go-ozzo/ozzo-validation/is"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
 	"property-finder-go-bootcamp-homework/internal/domain/user/entity_user"
-	"property-finder-go-bootcamp-homework/pkg/str"
+	"property-finder-go-bootcamp-homework/pkg/string_helper"
 	"regexp"
 )
 
@@ -18,13 +18,13 @@ var Email = []validation.Rule{
 var Firstname = []validation.Rule{
 	validation.Required.Error(messages.REQUIRED_FIELD.Error()),
 	validation.Length(1, 25).Error(messages.WRONG_LENGHT.Error()),
-	validation.Match(regexp.MustCompile(str.NameRegex)).Error(messages.WRONG_FORMAT.Error()),
+	validation.Match(regexp.MustCompile(string_helper.NameRegex)).Error(messages.WRONG_FORMAT.Error()),
 }
 
 var Lastname = []validation.Rule{
 	validation.Required.Error(messages.REQUIRED_FIELD.Error()),
 	validation.Length(1, 25).Error(messages.WRONG_LENGHT.Error()),
-	validation.Match(regexp.MustCompile(str.NameRegex)).Error(messages.WRONG_FORMAT.Error()),
+	validation.Match(regexp.MustCompile(string_helper.NameRegex)).Error(messages.WRONG_FORMAT.Error()),
 }
 
 var Password = []validation.Rule{
