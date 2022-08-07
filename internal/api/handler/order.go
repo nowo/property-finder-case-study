@@ -28,14 +28,8 @@ func CreateOrder(c *fiber.Ctx) error {
 			Data:    nil,
 		})
 	}
-	totalPrice, vatOfCart, err := cartService.CalculatePrice(productList, uint(userID))
-	if err != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
-			Status:  false,
-			Message: err.Error(),
-			Data:    nil,
-		})
-	}
+	totalPrice, vatOfCart := cartService.CalculatePrice(productList, uint(userID))
+
 	err = orderService.CreateOrder(uint(userID), totalPrice, vatOfCart)
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
@@ -49,7 +43,6 @@ func CreateOrder(c *fiber.Ctx) error {
 		Message: messages.ORDER_CREATE_SUCCESS,
 		Data:    nil,
 	})
-
 }
 
 func ListOrders(c *fiber.Ctx) error {

@@ -1,7 +1,6 @@
 package service_order
 
 import (
-	"fmt"
 	"property-finder-go-bootcamp-homework/internal/domain/cart/repository_cart"
 	"property-finder-go-bootcamp-homework/internal/domain/order"
 	"property-finder-go-bootcamp-homework/internal/domain/order/entity_order"
@@ -21,25 +20,20 @@ func New() IOrderService {
 }
 
 func (s *OrderService) CreateOrder(userID uint, totalPrice, vatOfCart float64) error {
-
-	newOrder := entity_order.NewOrderInfo(userID, totalPrice, vatOfCart)
-	createResponse, orderCreateErr := s.OrderRepo.CreateOrder(order.Order{
-		OrderInfo: *newOrder,
+	newOrderInfo := entity_order.NewOrderInfo(userID, totalPrice, vatOfCart)
+	createResponse, err := s.OrderRepo.CreateOrder(order.Order{
+		OrderInfo: *newOrderInfo,
 	})
-	if orderCreateErr != nil {
-		return orderCreateErr
+	if err != nil {
+		return err
 	}
-	cartCompleteError := s.CartRepo.Complete(userID, createResponse.ID)
-	if cartCompleteError != nil {
-		return cartCompleteError
+	err = s.CartRepo.Complete(userID, createResponse.ID)
+	if err != nil {
+		return err
 	}
-	fmt.Println(s.OrderRepo.GetOrderByUserID(userID))
-	fmt.Println(s.OrderRepo.GetOrderFromLastMonth(userID))
 	return nil
 }
 
 func (s *OrderService) GetOrderByUserID(userID uint) ([]order.Order, error) {
-	fmt.Println("orderlari cekti")
-	fmt.Println("userID: ", userID)
 	return s.OrderRepo.GetOrderByUserID(userID)
 }

@@ -2,24 +2,21 @@ package handler
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"property-finder-go-bootcamp-homework/dto/auth"
 	"property-finder-go-bootcamp-homework/dto/general"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
-	domain "property-finder-go-bootcamp-homework/internal/domain/user"
+	"property-finder-go-bootcamp-homework/internal/domain/user"
 	"property-finder-go-bootcamp-homework/internal/domain/user/entity_user"
 	"property-finder-go-bootcamp-homework/internal/domain/user/service_user"
 	"property-finder-go-bootcamp-homework/pkg/validation"
-	"property-finder-go-bootcamp-homework/pkg/validation/user_info_validation"
 )
 
-func Register(c *fiber.Ctx) error {
+func RegisterUser(c *fiber.Ctx) error {
 	var userInfo entity_user.UserInfo
 
 	encodeError := json.Unmarshal(c.Body(), &userInfo)
 	if encodeError != nil {
-		fmt.Println(encodeError)
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: messages.BAD_REQUEST.Error(),
@@ -27,9 +24,8 @@ func Register(c *fiber.Ctx) error {
 		})
 	}
 
-	validationError := user_info_validation.Validate(&userInfo)
+	validationError := validation.Validate(&userInfo)
 	if validationError != nil {
-		fmt.Println(validationError)
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: messages.BAD_REQUEST.Error(),
@@ -38,7 +34,10 @@ func Register(c *fiber.Ctx) error {
 	}
 
 	userService := service_user.New()
-	token, registerError := userService.Register(domain.User{UserInfo: userInfo})
+	token, registerError := userService.
+		Register(user.User{
+			UserInfo: userInfo,
+		})
 	if registerError != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(general.Response{
 			Status:  false,
@@ -57,7 +56,6 @@ func Login(c *fiber.Ctx) error {
 	var userInfo auth.LoginRequest
 	encodeError := json.Unmarshal(c.Body(), &userInfo)
 	if encodeError != nil {
-		fmt.Println(encodeError)
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: messages.BAD_REQUEST.Error(),
@@ -67,7 +65,6 @@ func Login(c *fiber.Ctx) error {
 
 	validationError := validation.ValidateLoginRequest(&userInfo)
 	if validationError != nil {
-		fmt.Println(validationError)
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: messages.BAD_REQUEST.Error(),

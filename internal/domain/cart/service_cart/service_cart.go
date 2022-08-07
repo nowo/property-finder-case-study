@@ -1,16 +1,14 @@
 package service_cart
 
 import (
-	"fmt"
-	"property-finder-go-bootcamp-homework/internal/.config/general"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
 	"property-finder-go-bootcamp-homework/internal/domain/cart"
 	"property-finder-go-bootcamp-homework/internal/domain/cart/repository_cart"
 	"property-finder-go-bootcamp-homework/internal/domain/order/repository_order"
 	"property-finder-go-bootcamp-homework/internal/domain/product"
 	"property-finder-go-bootcamp-homework/internal/domain/product/repository_product"
+	"property-finder-go-bootcamp-homework/pkg/constants"
 	_jwt "property-finder-go-bootcamp-homework/pkg/jwt"
-	"strconv"
 )
 
 type CartService struct {
@@ -57,12 +55,12 @@ func (c *CartService) DeleteFromCart(userID, productID uint) error {
 func (c *CartService) GetCartByUserID(userID uint) ([]product.Product, error) {
 
 	var buyedProducts = make([]product.Product, 0)
-	cartList, err := c.CartRepo.GetCartInfoByUserID(userID)
+	cartList, err := c.CartRepo.GetCartsByUserID(userID)
 	if err != nil {
 		return nil, err
 	}
 	for _, cart := range cartList {
-		selectedProduct, err := c.ProductRepo.GetProductByID(cart.ProductID)
+		selectedProduct, err := c.ProductRepo.GetProductByID(cart.CartInfo.ProductID)
 		if err != nil {
 			return nil, err
 		}
@@ -71,7 +69,7 @@ func (c *CartService) GetCartByUserID(userID uint) ([]product.Product, error) {
 	return buyedProducts, nil
 }
 
-func (c *CartService) CalculatePrice(cartList []product.Product, userID uint) (float64, float64, error) {
+func (c *CartService) CalculatePrice(cartList []product.Product, userID uint) (float64, float64) {
 
 	var totalPrice float64 = 0
 	var vatOfCart float64 = 0
@@ -82,32 +80,30 @@ func (c *CartService) CalculatePrice(cartList []product.Product, userID uint) (f
 		totalPrice += product.ProductInfo.Price + vat
 	}
 
-	discountAPrice, discountBPrice, discountCPrice, discountAVat, discountBVat, discountCVat := totalPrice, totalPrice, totalPrice, vatOfCart, vatOfCart, vatOfCart
+	discountAPrice, discountBPrice, discountCPrice := totalPrice, totalPrice, totalPrice
+	discountAVat, discountBVat, discountCVat := vatOfCart, vatOfCart, vatOfCart
 
-	if c.isUserDeservedForthOrderDiscount(userID, totalPrice) {
-		fmt.Println("User deserve discount")
-		discountAPrice, discountAVat = c.calculateForthOrderDiscount(cartList)
-	}
-	discountBPrice, discountBVat = c.moreThanThreeDisountPrice(cartList)
-	//discountCPrice, discountCVat = c.monthlyDiscount(userID, totalPrice, vatOfCart)
-	fmt.Println(discountAPrice, discountBPrice, discountCPrice)
-	if discountAPrice < discountBPrice {
-		if discountAPrice < discountCPrice {
-			fmt.Println("discountA")
-			return discountAPrice, discountAVat, nil
-		}
-		fmt.Println("discountC")
-		return discountCPrice, discountCVat, nil
-	}
-	if discountBPrice < discountCPrice {
-		fmt.Println("discountB")
-		return discountBPrice, discountBVat, nil
-	}
+	discountAPrice, discountAVat = c.applyForthOrderDiscountPrice(cartList, userID, discountAPrice, discountAVat)
+	discountBPrice, discountBVat = c.applySameProductDiscountPrice(cartList)
+	discountCPrice, discountCVat = c.applyMonthlyDiscountPrice(userID, totalPrice, vatOfCart)
 
-	return totalPrice, vatOfCart, nil
+	return getSmallestDiscount(discountAPrice, discountBPrice, discountCPrice), getSmallestDiscount(discountAVat, discountBVat, discountCVat)
 }
 
-func (c *CartService) moreThanThreeDisountPrice(productList []product.Product) (float64, float64) {
+func getSmallestDiscount(discountA, discountB, discountC float64) float64 {
+	if discountA < discountB {
+		if discountA < discountC {
+			return discountA
+		}
+		return discountC
+	}
+	if discountB < discountC {
+		return discountB
+	}
+	return discountC
+}
+
+func (c *CartService) applySameProductDiscountPrice(productList []product.Product) (float64, float64) {
 	var totalPrice float64 = 0
 	var vatOfCart float64 = 0
 
@@ -131,73 +127,63 @@ func (c *CartService) moreThanThreeDisountPrice(productList []product.Product) (
 	return totalPrice, vatOfCart
 }
 
-func (c *CartService) monthlyDiscount(userID uint, price float64, vatOfCart float64) (float64, float64) {
+func (c *CartService) applyMonthlyDiscountPrice(userID uint, totalPrice float64, vatOfCart float64) (float64, float64) {
 	orders, err := c.OrderRepo.GetOrderFromLastMonth(userID)
 	if err != nil {
-		return price, 0
+		return totalPrice, vatOfCart
 	}
-	var totalPrice float64 = 0
+	var totalPricesFromLastMonth float64 = 0
 	for _, order := range orders {
-		totalPrice += order.OrderInfo.TotalPrice
+		totalPricesFromLastMonth += order.OrderInfo.TotalPrice
 	}
-	givenAmounth, err := strconv.Atoi(general.GIVEN_AMOUNT)
-	if err != nil {
-		return price, 0
+
+	if totalPricesFromLastMonth < constants.GivenAmounth {
+		return totalPrice, vatOfCart
 	}
-	if totalPrice < float64(givenAmounth) {
-		return price, 0
-	}
-	return price - (price * 0.1), vatOfCart - (vatOfCart * 0.1)
+	return totalPrice - (totalPrice * 0.1), vatOfCart - (vatOfCart * 0.1)
 }
 
 func (c *CartService) isUserDeservedForthOrderDiscount(userID uint, totalPrice float64) bool {
-	fmt.Println("isUserDeservedForthOrderDiscount")
-	fmt.Println(userID)
 	orders, err := c.OrderRepo.GetOrderByUserID(userID)
 	if err != nil {
-		fmt.Println("isUserDeservedForthOrderDiscount")
 		return false
 	}
 	orderCount := 0
-	givenAmounth, err := strconv.Atoi(general.GIVEN_AMOUNT)
-	if err != nil {
-		return false
-	}
 	for _, order := range orders {
-		if order.OrderInfo.TotalPrice > float64(givenAmounth) {
+		if order.OrderInfo.TotalPrice > constants.GivenAmounth {
 			orderCount++
 		}
 	}
-
-	if orderCount%4 != 3 {
+	if orderCount%constants.SameProductDiscountCount != constants.SameProductDiscountCount-1 {
 		return false
 	}
-	if totalPrice < float64(givenAmounth) {
+	if totalPrice < constants.GivenAmounth {
 		return false
 	}
 	return true
 }
-func (c *CartService) calculateForthOrderDiscount(productList []product.Product) (float64, float64) {
-	var totalPrice float64 = 0
+func (c *CartService) applyForthOrderDiscountPrice(productList []product.Product, userID uint, totalPrice, vatOfCard float64) (float64, float64) {
+	if !c.isUserDeservedForthOrderDiscount(userID, totalPrice) {
+		return totalPrice, vatOfCard
+	}
+	var appliedTotalPrice float64 = 0
 	var vatOfCart float64 = 0
 
-	fmt.Println(len(productList))
 	for _, selectedProduct := range productList {
 		switch selectedProduct.ProductInfo.Vat {
 		case 1:
 			vat := (selectedProduct.ProductInfo.Price * float64(selectedProduct.ProductInfo.Vat)) / 100
 			vatOfCart += vat
-			totalPrice += selectedProduct.ProductInfo.Price + vat
+			appliedTotalPrice += selectedProduct.ProductInfo.Price + vat
 		case 8:
 			vat := (selectedProduct.ProductInfo.Price * float64(selectedProduct.ProductInfo.Vat)) / 100
 			vatOfCart += vat - vat*0.1
-			totalPrice += (selectedProduct.ProductInfo.Price + vat) - (selectedProduct.ProductInfo.Price+vat)*0.1
+			appliedTotalPrice += (selectedProduct.ProductInfo.Price + vat) - (selectedProduct.ProductInfo.Price+vat)*0.1
 		case 18:
 			vat := (selectedProduct.ProductInfo.Price * float64(selectedProduct.ProductInfo.Vat)) / 100
 			vatOfCart += vat - vat*0.15
-			totalPrice += (selectedProduct.ProductInfo.Price + vat) - (selectedProduct.ProductInfo.Price+vat)*0.15
+			appliedTotalPrice += (selectedProduct.ProductInfo.Price + vat) - (selectedProduct.ProductInfo.Price+vat)*0.15
 		}
-		fmt.Println("selected price", selectedProduct.ProductInfo.Price)
 	}
-	return totalPrice, vatOfCart
+	return appliedTotalPrice, vatOfCart
 }

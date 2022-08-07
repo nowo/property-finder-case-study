@@ -9,8 +9,9 @@ import (
 	"golang.org/x/text/language"
 )
 
+//Todo: str ismini degistir
 var space = regexp.MustCompile(`\s+`)
-var NameRegex = `^[a-zA-ZğüşöçİĞÜŞÖÇ]+$`
+var NameRegex = `^[a-zA-ZğüşöçıİĞÜŞÖÇ]+$`
 
 func UpperCaseFirstLetters(s string) string {
 	c := cases.Title(language.Turkish)

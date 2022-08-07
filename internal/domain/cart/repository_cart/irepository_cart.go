@@ -5,10 +5,9 @@ import (
 )
 
 type ICartRepository interface {
-	GetCartInfoByUserID(userID uint) ([]cart.Cart, error)
+	GetCartsByUserID(userID uint) ([]cart.Cart, error)
 	Create(newCart cart.Cart) error
 	CountByProductID(productID uint) (int64, error)
-	IsAmountExceedByMonth(userID uint) (bool, error)
 	Delete(userID, productID uint) error
 	Complete(userID, OrderID uint) error
 }

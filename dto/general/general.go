@@ -1,5 +1,7 @@
 package general
 
+import "property-finder-go-bootcamp-homework/internal/domain/product"
+
 type Token struct {
 	Token string `json:"token"`
 }
@@ -7,5 +9,11 @@ type Token struct {
 type Response struct {
 	Status  bool        `json:"status"`
 	Message string      `json:"message"`
-	Data    interface{} `json:"data"`
+	Data    interface{} `json:"data,omitempty"`
+}
+
+type BasketResponse struct {
+	Cart       []product.Product `json:"cart"`
+	TotalPrice float64           `json:"price"`
+	VatOfCart  float64           `json:"vat"`
 }

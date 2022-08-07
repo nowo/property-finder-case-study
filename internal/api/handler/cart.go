@@ -1,22 +1,18 @@
 package handler
 
 import (
-	"fmt"
 	"github.com/gofiber/fiber/v2"
 	_ "github.com/gofiber/jwt/v2"
 	"property-finder-go-bootcamp-homework/dto/general"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
-	"property-finder-go-bootcamp-homework/internal/domain/cart"
 	"property-finder-go-bootcamp-homework/internal/domain/cart/service_cart"
 	"strconv"
 )
 
 func AddToCart(c *fiber.Ctx) error {
 	productIDString := c.Query("id")
-
 	productID, err := strconv.Atoi(productIDString)
 	if err != nil {
-		fmt.Println("erdal")
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: messages.BAD_REQUEST.Error(),
@@ -45,7 +41,6 @@ func DeleteFromCart(c *fiber.Ctx) error {
 
 	productID, err := strconv.Atoi(productIDString)
 	if err != nil {
-		fmt.Println("erdal")
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
 			Status:  false,
 			Message: messages.BAD_REQUEST.Error(),
@@ -71,7 +66,6 @@ func DeleteFromCart(c *fiber.Ctx) error {
 
 func ListCart(c *fiber.Ctx) error {
 	userID := c.Locals("userID").(float64)
-	fmt.Println("userID", userID)
 	cartList, listCartError := service_cart.New().GetCartByUserID(uint(userID))
 	if listCartError != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
@@ -81,21 +75,12 @@ func ListCart(c *fiber.Ctx) error {
 		})
 	}
 
-	totalPrice, vatOfCart, err := service_cart.New().CalculatePrice(cartList, uint(userID))
-	fmt.Println("totalPrice", totalPrice)
-	fmt.Println("vatOfCart", vatOfCart)
-	if err != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
-			Status:  false,
-			Message: err.Error(),
-			Data:    nil,
-		})
-	}
+	totalPrice, vatOfCart := service_cart.New().CalculatePrice(cartList, uint(userID))
 
 	return c.Status(fiber.StatusOK).JSON(general.Response{
 		Status:  true,
 		Message: messages.PRODUCT_LIST_CART_SUCCESS,
-		Data: cart.Basket{
+		Data: general.BasketResponse{
 			Cart:       cartList,
 			TotalPrice: totalPrice,
 			VatOfCart:  vatOfCart,

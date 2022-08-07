@@ -15,17 +15,17 @@ func New() IProductService {
 	}
 }
 func (s *ProductService) GetAll() ([]domain.Product, error) {
-	products, getAllProductsError := s.Repo.ShowAllProducts()
-	if getAllProductsError != nil {
-		return []domain.Product{}, getAllProductsError
+	products, err := s.Repo.ShowAllProducts()
+	if err != nil {
+		return []domain.Product{}, err
 	}
 	return products, nil
 }
 
 func (s *ProductService) GetByID(id uint) (domain.Product, error) {
-	product, getProductError := s.Repo.GetProductByID(id)
-	if getProductError != nil {
-		return domain.Product{}, getProductError
+	product, err := s.Repo.GetProductByID(id)
+	if err != nil {
+		return domain.Product{}, err
 	}
 	return product, nil
 }

@@ -9,6 +9,8 @@ services:
       - POSTGRES_DB=mydb
     volumes:
       - data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
   server:
     image: cosmtrek/air
     working_dir: /project-package

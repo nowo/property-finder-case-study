@@ -3,7 +3,7 @@ package postgres
 import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"property-finder-go-bootcamp-homework/internal/.config/postgres_config"
+	"property-finder-go-bootcamp-homework/internal/.config"
 	"property-finder-go-bootcamp-homework/internal/domain/cart"
 	"property-finder-go-bootcamp-homework/internal/domain/order"
 	"property-finder-go-bootcamp-homework/internal/domain/product"
@@ -12,7 +12,7 @@ import (
 
 func ConnectDB() *gorm.DB {
 
-	DB, err := gorm.Open(postgres.Open(postgres_config.URI), &gorm.Config{})
+	DB, err := gorm.Open(postgres.Open(_config.URI), &gorm.Config{})
 
 	if err != nil {
 		panic(err)

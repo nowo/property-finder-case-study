@@ -2,16 +2,15 @@ package jwt
 
 import (
 	"fmt"
-	"property-finder-go-bootcamp-homework/internal/.config/jwt_config"
-
 	"github.com/dgrijalva/jwt-go"
+	"property-finder-go-bootcamp-homework/internal/.config"
 )
 
 func keyFunc(token *jwt.Token) (interface{}, error) {
 	if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 		return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
 	}
-	return jwt_config.JWT_SECRET_KEY, nil
+	return _config.JWT_SECRETKEY, nil
 }
 
 type JWT struct {
@@ -22,7 +21,7 @@ type JWT struct {
 func New() *JWT {
 	return &JWT{
 		DumpClaim: jwt.MapClaims{
-			"exp": jwt_config.TOKEN_EXPIRATION_TIME,
+			"exp": _config.TOKEN_EXPIRATION_TIME,
 		},
 		Token: "",
 	}
@@ -55,7 +54,7 @@ func (_jwt *JWT) SetIsVerified(isVerified bool) *JWT {
 
 func (_jwt *JWT) CreateToken() *JWT {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, _jwt.DumpClaim)
-	tokenString, _ := token.SignedString([]byte(jwt_config.JWT_SECRET_KEY))
+	tokenString, _ := token.SignedString([]byte(_config.JWT_SECRETKEY))
 	_jwt.SetToken(tokenString)
 	return _jwt
 }

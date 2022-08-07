@@ -16,4 +16,5 @@ var (
 	PRODUCT_NOT_FOUND         = errors.New("Product not found")
 	NOT_ENOUGH_QUANTITY       = errors.New("Not enough quantity")
 	CART_EMPTY                = errors.New("Cart is empty")
+	NO_RECORD_FOUND           = errors.New("Record not found")
 )

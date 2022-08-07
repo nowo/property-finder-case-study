@@ -1,29 +1,17 @@
 package cart
 
 import (
-	"fmt"
 	"gorm.io/gorm"
-	"property-finder-go-bootcamp-homework/internal/domain/product"
+	"property-finder-go-bootcamp-homework/internal/domain/cart/entity_cart"
 )
 
 type Cart struct {
 	gorm.Model
-	UserID      uint `json:"user_id"`
-	ProductID   uint `json:"product_id"`
-	OrderID     uint `json:"order_id"`
-	IsCompleted bool `json:"is_completed"`
+	CartInfo entity_cart.CartInfo `json:"cart_info" gorm:"embedded;embedded_prefix:cart_info_"`
 }
 
 func NewCart(userID uint, productID uint) *Cart {
-	fmt.Println(userID)
 	return &Cart{
-		UserID:    userID,
-		ProductID: productID,
+		CartInfo: *entity_cart.NewCartInfo(userID, productID, 0, false),
 	}
-}
-
-type Basket struct {
-	Cart       []product.Product `json:"cart"`
-	TotalPrice float64           `json:"price"`
-	VatOfCart  float64           `json:"vat"`
 }

@@ -1,23 +1,48 @@
 package entity_cart
 
 type CartInfo struct {
-	TotalPrice float64 `json:"price"`
-	VatOfCart  float64 `json:"vat"`
+	UserID      uint `json:"user_id"`
+	ProductID   uint `json:"product_id"`
+	OrderID     uint `json:"order_id"`
+	IsCompleted bool `json:"is_completed"`
 }
 
-func (cartinfo *CartInfo) GetPrice() float64 {
-	return cartinfo.TotalPrice
+func NewCartInfo(userID uint, productID uint, orderID uint, isCompleted bool) *CartInfo {
+	cartInfo := new(CartInfo)
+	cartInfo.SetUserID(userID)
+	cartInfo.SetProductID(productID)
+	cartInfo.SetOrderID(orderID)
+	cartInfo.SetIsCompleted(isCompleted)
+	return cartInfo
+}
+func (cartinfo *CartInfo) GetUserID() uint {
+	return cartinfo.UserID
 }
 
-func (cartinfo *CartInfo) SetPrice(Price float64) *CartInfo {
-	cartinfo.TotalPrice = Price
-	return cartinfo
+func (cartinfo *CartInfo) GetProductID() uint {
+	return cartinfo.ProductID
 }
 
-func (cartinfo *CartInfo) GetVat() float64 {
-	return cartinfo.VatOfCart
+func (cartinfo *CartInfo) GetOrderID() uint {
+	return cartinfo.OrderID
 }
-func (cartinfo *CartInfo) SetVat(Vat float64) *CartInfo {
-	cartinfo.VatOfCart = Vat
-	return cartinfo
+
+func (cartinfo *CartInfo) GetIsCompleted() bool {
+	return cartinfo.IsCompleted
+}
+
+func (cartinfo *CartInfo) SetUserID(UserID uint) {
+	cartinfo.UserID = UserID
+}
+
+func (cartinfo *CartInfo) SetProductID(ProductID uint) {
+	cartinfo.ProductID = ProductID
+}
+
+func (cartinfo *CartInfo) SetOrderID(OrderID uint) {
+	cartinfo.OrderID = OrderID
+}
+
+func (cartinfo *CartInfo) SetIsCompleted(IsCompleted bool) {
+	cartinfo.IsCompleted = IsCompleted
 }
