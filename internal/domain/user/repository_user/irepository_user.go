@@ -6,6 +6,6 @@ import (
 
 type IRepository interface {
 	GetUserInfoByEmail(email string) (user.User, error)
-	Create(user user.User) (user.User, error)
+	Create(newUser user.User) (user.User, error)
 	CheckEmailExists(email string) (bool, error)
 }

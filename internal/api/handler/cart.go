@@ -5,7 +5,10 @@ import (
 	_ "github.com/gofiber/jwt/v2"
 	"property-finder-go-bootcamp-homework/dto/general"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
+	"property-finder-go-bootcamp-homework/internal/domain/cart/repository_cart"
 	"property-finder-go-bootcamp-homework/internal/domain/cart/service_cart"
+	"property-finder-go-bootcamp-homework/internal/domain/order/repository_order"
+	"property-finder-go-bootcamp-homework/internal/domain/product/repository_product"
 	"property-finder-go-bootcamp-homework/pkg/logger"
 	"strconv"
 )
@@ -23,7 +26,7 @@ func AddToCart(c *fiber.Ctx) error {
 		})
 	}
 	userID := c.Locals("userID").(float64)
-	addToCartError := service_cart.New().AddToCart(uint(userID), uint(productID))
+	addToCartError := service_cart.New(&repository_cart.CartRepository{}, &repository_product.ProductRepository{}, &repository_order.OrderRepository{}).AddToCart(uint(userID), uint(productID))
 	if addToCartError != nil {
 		logger.Errorf(addToCartError.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
@@ -53,7 +56,7 @@ func DeleteFromCart(c *fiber.Ctx) error {
 		})
 	}
 	userID := c.Locals("userID").(float64)
-	deleteFromCartError := service_cart.New().DeleteFromCart(uint(userID), uint(productID))
+	deleteFromCartError := service_cart.New(&repository_cart.CartRepository{}, &repository_product.ProductRepository{}, &repository_order.OrderRepository{}).DeleteFromCart(uint(userID), uint(productID))
 	if deleteFromCartError != nil {
 		logger.Errorf(deleteFromCartError.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
@@ -72,7 +75,7 @@ func DeleteFromCart(c *fiber.Ctx) error {
 
 func ListCart(c *fiber.Ctx) error {
 	userID := c.Locals("userID").(float64)
-	cartList, listCartError := service_cart.New().GetCartByUserID(uint(userID))
+	cartList, listCartError := service_cart.New(&repository_cart.CartRepository{}, &repository_product.ProductRepository{}, &repository_order.OrderRepository{}).GetCartByUserID(uint(userID))
 	if listCartError != nil {
 		logger.Errorf(listCartError.Error())
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
@@ -81,7 +84,7 @@ func ListCart(c *fiber.Ctx) error {
 			Data:    nil,
 		})
 	}
-	totalPrice, vatOfCart := service_cart.New().CalculatePrice(cartList, uint(userID))
+	totalPrice, vatOfCart := service_cart.New(&repository_cart.CartRepository{}, &repository_product.ProductRepository{}, &repository_order.OrderRepository{}).CalculatePrice(cartList, uint(userID))
 
 	return c.Status(fiber.StatusOK).JSON(general.Response{
 		Status:  true,

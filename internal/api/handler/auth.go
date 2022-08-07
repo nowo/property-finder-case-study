@@ -8,6 +8,7 @@ import (
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
 	"property-finder-go-bootcamp-homework/internal/domain/user"
 	"property-finder-go-bootcamp-homework/internal/domain/user/entity_user"
+	"property-finder-go-bootcamp-homework/internal/domain/user/repository_user"
 	"property-finder-go-bootcamp-homework/internal/domain/user/service_user"
 	"property-finder-go-bootcamp-homework/pkg/logger"
 	"property-finder-go-bootcamp-homework/pkg/validation"
@@ -37,7 +38,7 @@ func RegisterUser(c *fiber.Ctx) error {
 		})
 	}
 
-	userService := service_user.New()
+	userService := service_user.New(&repository_user.Repository{})
 	token, registerError := userService.
 		Register(user.User{
 			UserInfo: userInfo,
@@ -79,7 +80,7 @@ func Login(c *fiber.Ctx) error {
 		})
 	}
 
-	userService := service_user.New()
+	userService := service_user.New(&repository_user.Repository{})
 	token, registerError := userService.Login(userInfo)
 	if registerError != nil {
 		logger.Errorf(registerError.Error())

@@ -18,11 +18,11 @@ type CartService struct {
 	jwt         _jwt.JWT
 }
 
-func New() ICartService {
+func New(cartRepo repository_cart.ICartRepository, productRepo repository_product.IProductRepository, orderRepo repository_order.IRepositoryOrder) ICartService {
 	return &CartService{
-		CartRepo:    repository_cart.New(),
-		ProductRepo: repository_product.New(),
-		OrderRepo:   repository_order.New(),
+		CartRepo:    cartRepo,
+		ProductRepo: productRepo,
+		OrderRepo:   orderRepo,
 		jwt:         *_jwt.New(),
 	}
 }
@@ -48,7 +48,6 @@ func (c *CartService) AddToCart(userID, productID uint) error {
 }
 
 func (c *CartService) DeleteFromCart(userID, productID uint) error {
-
 	return c.CartRepo.Delete(userID, productID)
 }
 

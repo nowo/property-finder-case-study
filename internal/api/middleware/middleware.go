@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"fmt"
 	"property-finder-go-bootcamp-homework/dto/general"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
 	"property-finder-go-bootcamp-homework/pkg/jwt"
@@ -14,7 +13,6 @@ func CanPassWithToken(c *fiber.Ctx) error {
 	authorization := c.Get("Authorization")
 	splittedAuthorization := strings.Split(authorization, " ")
 	if len(splittedAuthorization) != 2 {
-		fmt.Println("unauthorized user")
 		return c.Status(fiber.StatusUnauthorized).JSON(general.Response{
 			Status:  false,
 			Message: messages.UNAUTHORIZED_USER.Error(),

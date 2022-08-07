@@ -4,16 +4,19 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"property-finder-go-bootcamp-homework/dto/general"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
+	"property-finder-go-bootcamp-homework/internal/domain/cart/repository_cart"
 	"property-finder-go-bootcamp-homework/internal/domain/cart/service_cart"
+	"property-finder-go-bootcamp-homework/internal/domain/order/repository_order"
 	"property-finder-go-bootcamp-homework/internal/domain/order/service_order"
+	"property-finder-go-bootcamp-homework/internal/domain/product/repository_product"
 	"property-finder-go-bootcamp-homework/pkg/logger"
 )
 
 func CreateOrder(c *fiber.Ctx) error {
 	userID := c.Locals("userID").(float64)
 
-	cartService := service_cart.New()
-	orderService := service_order.New()
+	cartService := service_cart.New(&repository_cart.CartRepository{}, &repository_product.ProductRepository{}, &repository_order.OrderRepository{})
+	orderService := service_order.New(&repository_cart.CartRepository{}, &repository_order.OrderRepository{})
 	productList, err := cartService.GetCartByUserID(uint(userID))
 	if len(productList) == 0 {
 		return c.Status(fiber.StatusBadRequest).JSON(general.Response{
@@ -50,7 +53,7 @@ func CreateOrder(c *fiber.Ctx) error {
 
 func ListOrders(c *fiber.Ctx) error {
 	userID := c.Locals("userID").(float64)
-	orderService := service_order.New()
+	orderService := service_order.New(&repository_cart.CartRepository{}, &repository_order.OrderRepository{})
 	orderList, err := orderService.GetOrderByUserID(uint(userID))
 	if err != nil {
 		logger.Errorf(err.Error())

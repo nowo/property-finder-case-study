@@ -9,9 +9,9 @@ type ProductService struct {
 	Repo repository_product.IProductRepository
 }
 
-func New() IProductService {
+func New(repo repository_product.IProductRepository) IProductService {
 	return &ProductService{
-		Repo: repository_product.New(),
+		Repo: repo,
 	}
 }
 func (s *ProductService) GetAll() ([]domain.Product, error) {

@@ -6,19 +6,20 @@ import (
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
 	"property-finder-go-bootcamp-homework/internal/domain/user"
 	"property-finder-go-bootcamp-homework/internal/domain/user/entity_user"
-	repository2 "property-finder-go-bootcamp-homework/internal/domain/user/repository_user"
+	"property-finder-go-bootcamp-homework/internal/domain/user/repository_user"
+
 	"property-finder-go-bootcamp-homework/pkg/errors"
 	_jwt "property-finder-go-bootcamp-homework/pkg/jwt"
 )
 
 type UserService struct {
-	Repo repository2.IRepository
+	Repo repository_user.IRepository
 	jwt  _jwt.JWT
 }
 
-func New() IUserService {
+func New(repo repository_user.IRepository) IUserService {
 	return &UserService{
-		Repo: repository2.New(),
+		Repo: repo,
 		jwt:  *_jwt.New(),
 	}
 }

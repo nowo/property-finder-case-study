@@ -4,13 +4,14 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"property-finder-go-bootcamp-homework/dto/general"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
+	"property-finder-go-bootcamp-homework/internal/domain/product/repository_product"
 	"property-finder-go-bootcamp-homework/internal/domain/product/service_product"
 	"property-finder-go-bootcamp-homework/pkg/logger"
 	"strconv"
 )
 
 func ListProducts(c *fiber.Ctx) error {
-	productService := service_product.New()
+	productService := service_product.New(&repository_product.ProductRepository{})
 	products, err := productService.GetAll()
 	if err != nil {
 		logger.Errorf(err.Error())
@@ -39,7 +40,7 @@ func GetProductByID(c *fiber.Ctx) error {
 			Data:    nil,
 		})
 	}
-	productService := service_product.New()
+	productService := service_product.New(&repository_product.ProductRepository{})
 
 	product, getByIDError := productService.GetByID(uint(productID))
 	if getByIDError != nil {

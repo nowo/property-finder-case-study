@@ -12,10 +12,10 @@ type OrderService struct {
 	CartRepo  repository_cart.ICartRepository
 }
 
-func New() IOrderService {
+func New(cartRepo repository_cart.ICartRepository, orderRepo repository_order.IRepositoryOrder) IOrderService {
 	return &OrderService{
-		OrderRepo: repository_order.New(),
-		CartRepo:  repository_cart.New(),
+		OrderRepo: orderRepo,
+		CartRepo:  cartRepo,
 	}
 }
 

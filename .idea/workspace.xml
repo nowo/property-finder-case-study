@@ -4,7 +4,30 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa38f25d-57c5-4e70-8b7c-1649619f50d7" name="Changes" comment="" />
+    <list default="true" id="fa38f25d-57c5-4e70-8b7c-1649619f50d7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/targets.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/targets.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/server" beforeDir="false" afterPath="$PROJECT_DIR$/build/server" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/.config/endpoints.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/.config/endpoints.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/handler/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/handler/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/handler/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/handler/cart.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/handler/order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/handler/order.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/handler/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/handler/product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/api/middleware/middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/middleware/middleware.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/order/entity_order/entity_order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/entity_order/entity_order.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/order/service_order/service_order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/service_order/service_order.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/order/service_order/service_order_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/service_product/service_product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/service_product/service_product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/repository_user/irepository_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/repository_user/irepository_user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/service_user/service_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/service_user/service_user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/service_user/service_user_test.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testdata/testdata.go" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +43,15 @@
   <component name="GOROOT" url="file:///usr/local/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/go/pkg/mod/github.com/golang/mock@v1.6.0/gomock/controller.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/internal/api/handler/auth.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/domain/user/repository_user/irepository_user.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/domain/user/repository_user/repository_user.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/domain/user/service_user/service_user.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/mocks/register.go" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -50,13 +82,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test" />
+      <recent name="$PROJECT_DIR$/test/mocks" />
+      <recent name="$PROJECT_DIR$/test/acceptence/auth" />
       <recent name="$PROJECT_DIR$/internal/.config" />
       <recent name="$PROJECT_DIR$/internal/.config/postgres_config" />
-      <recent name="$PROJECT_DIR$/internal/api/handler" />
-      <recent name="$PROJECT_DIR$/internal" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.local">
+  <component name="RunManager" selected="Go Test.Test_CART_NOT_FOUND in property-finder-go-bootcamp-homework/test">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="property-finder-case-study" />
       <working_directory value="$PROJECT_DIR$" />
@@ -97,16 +130,64 @@
       <filePath value="$PROJECT_DIR$/cmd/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="TestUserService_Register in property-finder-go-bootcamp-homework/internal/domain/user/service_user" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="Test_ADD_TO_CART in property-finder-go-bootcamp-homework/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="property-finder-case-study" />
-      <working_directory value="$PROJECT_DIR$/internal/domain/user/service_user" />
+      <working_directory value="$PROJECT_DIR$/test" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="property-finder-go-bootcamp-homework/internal/domain/user/service_user" />
+      <package value="property-finder-go-bootcamp-homework/test" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestUserService_Register\E$" />
+      <pattern value="^\QTest_ADD_TO_CART\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_CART_ADDED in property-finder-go-bootcamp-homework/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="property-finder-case-study" />
+      <working_directory value="$PROJECT_DIR$/test" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="property-finder-go-bootcamp-homework/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTest_CART_ADDED\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_CART_DELETED in property-finder-go-bootcamp-homework/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="property-finder-case-study" />
+      <working_directory value="$PROJECT_DIR$/test" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="property-finder-go-bootcamp-homework/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTest_CART_DELETED\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_CART_NOT_FOUND in property-finder-go-bootcamp-homework/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="property-finder-case-study" />
+      <working_directory value="$PROJECT_DIR$/test" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="property-finder-go-bootcamp-homework/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTest_CART_NOT_FOUND\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_PRODUCT_NOT_FOUND in property-finder-go-bootcamp-homework/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="property-finder-case-study" />
+      <working_directory value="$PROJECT_DIR$/test" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="property-finder-go-bootcamp-homework/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTest_PRODUCT_NOT_FOUND\E$" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
@@ -121,7 +202,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestUserService_Register in property-finder-go-bootcamp-homework/internal/domain/user/service_user" />
+        <item itemvalue="Go Test.Test_CART_NOT_FOUND in property-finder-go-bootcamp-homework/test" />
+        <item itemvalue="Go Test.Test_CART_DELETED in property-finder-go-bootcamp-homework/test" />
+        <item itemvalue="Go Test.Test_CART_ADDED in property-finder-go-bootcamp-homework/test" />
+        <item itemvalue="Go Test.Test_PRODUCT_NOT_FOUND in property-finder-go-bootcamp-homework/test" />
+        <item itemvalue="Go Test.Test_ADD_TO_CART in property-finder-go-bootcamp-homework/test" />
       </list>
     </recent_temporary>
   </component>
@@ -142,16 +227,5 @@
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/domain/user/repository_user/repository_user.go</url>
-          <line>21</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
