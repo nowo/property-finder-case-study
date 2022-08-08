@@ -10,15 +10,15 @@ import (
 	"testing"
 )
 
-func Test_GET_ORDER_BY_ID(t *testing.T) {
-	Convey("Get Order By ID Test Integration", t, func() {
+func Test_GetOrderByID(t *testing.T) {
+	Convey("Given that i tried to get my orders", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		orderService := New(mockCartRepository, mockOrderRepository)
 		mockOrderRepository.EXPECT().GetOrderByUserID(uint(1)).Return([]order.Order{}, nil)
-		Convey("User Can Go", func() {
+		Convey("Then i get my orders", func() {
 			order, err := orderService.GetOrderByUserID(uint(1))
 			So(err, ShouldBeNil)
 			So(order, ShouldNotBeNil)
@@ -26,15 +26,15 @@ func Test_GET_ORDER_BY_ID(t *testing.T) {
 	})
 }
 
-func Test_ORDER_NOT_FOUND(t *testing.T) {
-	Convey("Order Not Found Test Integration", t, func() {
+func Test_OrderNotFound(t *testing.T) {
+	Convey("Given that i tried to search not found order", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		orderService := New(mockCartRepository, mockOrderRepository)
 		mockOrderRepository.EXPECT().GetOrderByUserID(uint(1)).Return([]order.Order{}, gorm.ErrRecordNotFound)
-		Convey("User Can Go", func() {
+		Convey("Then i get record not found error", func() {
 			orders, err := orderService.GetOrderByUserID(uint(1))
 			So(err, ShouldResemble, gorm.ErrRecordNotFound)
 			So(orders, ShouldResemble, []order.Order{})
@@ -42,8 +42,8 @@ func Test_ORDER_NOT_FOUND(t *testing.T) {
 	})
 }
 
-func Test_CREATE_ORDER(t *testing.T) {
-	Convey("Create Order Test Integration", t, func() {
+func Test_CreateOrder(t *testing.T) {
+	Convey("Given that i tried to complete my order", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
@@ -54,15 +54,15 @@ func Test_CREATE_ORDER(t *testing.T) {
 			OrderInfo: *newOrderInfo,
 		}).Return(order.Order{}, nil)
 		mockCartRepository.EXPECT().Complete(uint(1), uint(0)).Return(nil)
-		Convey("User Can Go", func() {
+		Convey("Then i completed my order sucessfully", func() {
 			err := orderService.CreateOrder(uint(1), float64(1), float64(1))
 			So(err, ShouldBeNil)
 		})
 	})
 }
 
-func Test_CREATE_ORDER_FAIL(t *testing.T) {
-	Convey("Create Order Fail Test Integration", t, func() {
+func Test_CreateOrderFailed(t *testing.T) {
+	Convey("Given that i tried to complete my order with invalid id ", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
@@ -72,7 +72,7 @@ func Test_CREATE_ORDER_FAIL(t *testing.T) {
 		mockOrderRepository.EXPECT().CreateOrder(order.Order{
 			OrderInfo: *newOrderInfo,
 		}).Return(order.Order{}, gorm.ErrRecordNotFound)
-		Convey("User Can Go", func() {
+		Convey("Then i get record not found error", func() {
 			err := orderService.CreateOrder(uint(1), float64(1), float64(1))
 			So(err, ShouldResemble, gorm.ErrRecordNotFound)
 		})

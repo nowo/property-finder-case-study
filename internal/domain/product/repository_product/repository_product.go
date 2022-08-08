@@ -49,3 +49,15 @@ func (r *ProductRepository) GetProductByID(id uint) (domain.Product, error) {
 
 	return product, nil
 }
+
+func (r *ProductRepository) UpdateProductQuantity(id uint, quantity int) error {
+	db := postgres.ConnectDB()
+	defer postgres.Disconnect(db)
+
+	response := db.Table("products").Where("id = ?", id).Update("quantity", quantity)
+	if response.Error != nil {
+		return response.Error
+	}
+
+	return nil
+}

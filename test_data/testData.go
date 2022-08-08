@@ -4,6 +4,7 @@ import (
 	"gorm.io/gorm"
 	"property-finder-go-bootcamp-homework/internal/domain/product"
 	"property-finder-go-bootcamp-homework/internal/domain/product/entity_product"
+	"property-finder-go-bootcamp-homework/internal/domain/user/entity_user"
 )
 
 var ProductList = []product.Product{
@@ -61,4 +62,11 @@ var ProductList = []product.Product{
 			Price: 500,
 			Vat:   18,
 		}},
+}
+
+var ValidRequestBody = entity_user.UserInfo{
+	Firstname: "Erdal",
+	Lastname:  "Cinar",
+	Email:     "erdalburakcinar@hotmail.com",
+	Password:  "123456789",
 }

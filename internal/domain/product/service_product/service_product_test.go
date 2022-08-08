@@ -11,14 +11,14 @@ import (
 	"testing"
 )
 
-func Test_Get_All_Products(t *testing.T) {
-	Convey("Get All Products Test Integration", t, func() {
+func Test_GetAllProducts(t *testing.T) {
+	Convey("Given that i tried to get all products", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		productService := New(mockProductRepository)
 		mockProductRepository.EXPECT().ShowAllProducts().Return([]domain.Product{}, nil)
-		Convey("User Can Go", func() {
+		Convey("Then i get all products", func() {
 			products, err := productService.GetAll()
 			So(err, ShouldBeNil)
 			So(products, ShouldNotBeNil)
@@ -26,8 +26,8 @@ func Test_Get_All_Products(t *testing.T) {
 	})
 }
 
-func Test_Get_Product_By_ID(t *testing.T) {
-	Convey("Get Product By ID Test Integration", t, func() {
+func Test_GetProductByID(t *testing.T) {
+	Convey("Given that i tried to get spesific product with id", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
@@ -40,7 +40,7 @@ func Test_Get_Product_By_ID(t *testing.T) {
 				Name: "Product 1",
 			},
 		}, nil)
-		Convey("User Can Go", func() {
+		Convey("Then i get spesific product", func() {
 			product, err := productService.GetByID(1)
 			So(err, ShouldBeNil)
 			So(product, ShouldNotBeNil)
@@ -48,14 +48,14 @@ func Test_Get_Product_By_ID(t *testing.T) {
 	})
 }
 
-func Test_Product_Not_Found(t *testing.T) {
-	Convey("Product Not Found Test Integration", t, func() {
+func TestProductNotFound(t *testing.T) {
+	Convey("Given that i searched invalid product", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		productService := New(mockProductRepository)
 		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(domain.Product{}, gorm.ErrRecordNotFound)
-		Convey("User Can Go", func() {
+		Convey("Then i get error", func() {
 			product, err := productService.GetByID(1)
 			So(err, ShouldNotBeNil)
 			So(product, ShouldResemble, domain.Product{})
@@ -64,13 +64,13 @@ func Test_Product_Not_Found(t *testing.T) {
 }
 
 func Test_Product_Service_Error(t *testing.T) {
-	Convey("Product Service Error Test Integration", t, func() {
+	Convey("Given that databased bugged when searching product", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		productService := New(mockProductRepository)
 		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(domain.Product{}, messages.DATABASE_OPERATION_FAILED)
-		Convey("User Can Go", func() {
+		Convey("Then i get database operation failed error", func() {
 			product, err := productService.GetByID(1)
 			So(err, ShouldNotBeNil)
 			So(product, ShouldResemble, domain.Product{})

@@ -5,21 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa38f25d-57c5-4e70-8b7c-1649619f50d7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/server" beforeDir="false" afterPath="$PROJECT_DIR$/build/server" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/.config/messages/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/.config/messages/errors.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mocks/cart_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/cart_repository_mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mocks/order_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/order_repository_mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mocks/product_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/product_repository_mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mocks/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/register.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/mocks/user_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/user_repository_mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/service_cart_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/service_order_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/service_order/service_order_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/service_product_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/service_product/service_product_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/service_user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/service_user/service_user_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/order/service_order/service_order_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/service_order/service_order_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/repository_product/irepository_product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/repository_product/irepository_product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/repository_product/repository_product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/repository_product/repository_product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/service_product/service_product_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/service_product/service_product_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/service_user/service_user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/service_user/service_user_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/mocks/product_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/product_repository_mock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/mocks/register.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/mocks/user_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/user_repository_mock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/testData.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/testData.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +44,6 @@
     <setting file="file://$PROJECT_DIR$/internal/domain/user/repository_user/irepository_user.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/internal/domain/user/repository_user/repository_user.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/internal/domain/user/service_user/service_user.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test_data/mocks/register.go" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -82,7 +81,7 @@
       <recent name="$PROJECT_DIR$/test" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.Test_CalculatePriceApplyForthOrderDiscount in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart">
+  <component name="RunManager" selected="Go Test.TestRegisterNonValidEmail in property-finder-go-bootcamp-homework/internal/domain/user/service_user">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="property-finder-case-study" />
       <working_directory value="$PROJECT_DIR$" />
@@ -123,19 +122,19 @@
       <filePath value="$PROJECT_DIR$/cmd/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="Test_CalculatePiceApplyAfterThreeProductDiscount in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestRegisterNonValidEmail in property-finder-go-bootcamp-homework/internal/domain/user/service_user" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="property-finder-case-study" />
-      <working_directory value="$PROJECT_DIR$/internal/domain/cart/service_cart" />
+      <working_directory value="$PROJECT_DIR$/internal/domain/user/service_user" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" />
+      <package value="property-finder-go-bootcamp-homework/internal/domain/user/service_user" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTest_CalculatePiceApplyAfterThreeProductDiscount\E$" />
+      <pattern value="^\QTestRegisterNonValidEmail\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="Test_CalculatePrice in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="Test_CART_ADDED in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="property-finder-case-study" />
       <working_directory value="$PROJECT_DIR$/internal/domain/cart/service_cart" />
       <root_directory value="$PROJECT_DIR$" />
@@ -144,7 +143,19 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTest_CalculatePrice\E$" />
+      <pattern value="^\QTest_CART_ADDED\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_CART_DELETED in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="property-finder-case-study" />
+      <working_directory value="$PROJECT_DIR$/internal/domain/cart/service_cart" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTest_CART_DELETED\E$" />
       <method v="2" />
     </configuration>
     <configuration name="Test_CalculatePriceApplyForthOrderDiscount in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -159,7 +170,7 @@
       <pattern value="^\QTest_CalculatePriceApplyForthOrderDiscount\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="Test_CalculatePriceApplyMonthlyDiscount in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="Test_CartDeleteFailed in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="property-finder-case-study" />
       <working_directory value="$PROJECT_DIR$/internal/domain/cart/service_cart" />
       <root_directory value="$PROJECT_DIR$" />
@@ -168,19 +179,7 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTest_CalculatePriceApplyMonthlyDiscount\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test_CalculatePriceNoDiscount in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="property-finder-case-study" />
-      <working_directory value="$PROJECT_DIR$/internal/domain/cart/service_cart" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTest_CalculatePriceNoDiscount\E$" />
+      <pattern value="^\QTest_CartDeleteFailed\E$" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
@@ -195,11 +194,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestRegisterNonValidEmail in property-finder-go-bootcamp-homework/internal/domain/user/service_user" />
+        <item itemvalue="Go Test.Test_CART_ADDED in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" />
+        <item itemvalue="Go Test.Test_CartDeleteFailed in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" />
+        <item itemvalue="Go Test.Test_CART_DELETED in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" />
         <item itemvalue="Go Test.Test_CalculatePriceApplyForthOrderDiscount in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" />
-        <item itemvalue="Go Test.Test_CalculatePriceApplyMonthlyDiscount in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" />
-        <item itemvalue="Go Test.Test_CalculatePiceApplyAfterThreeProductDiscount in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" />
-        <item itemvalue="Go Test.Test_CalculatePriceNoDiscount in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" />
-        <item itemvalue="Go Test.Test_CalculatePrice in property-finder-go-bootcamp-homework/internal/domain/cart/service_cart" />
       </list>
     </recent_temporary>
   </component>

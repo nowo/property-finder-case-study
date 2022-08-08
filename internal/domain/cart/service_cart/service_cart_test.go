@@ -15,8 +15,8 @@ import (
 	"testing"
 )
 
-func Test_PRODUCT_NOT_FOUND(t *testing.T) {
-	Convey("Create Cart Test Integration", t, func() {
+func Test_ProductNotFound(t *testing.T) {
+	Convey("Given that i tried to add unable product to cart ", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
@@ -24,38 +24,42 @@ func Test_PRODUCT_NOT_FOUND(t *testing.T) {
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(product.Product{}, nil)
-		Convey("User Can Go", func() {
+		Convey("Then i get product not enough quantity  error", func() {
 			err := cartService.AddToCart(uint(1), 1)
-			So(err, ShouldResemble, messages.PRODUCT_NOT_FOUND)
+			So(err, ShouldResemble, messages.NOT_ENOUGH_QUANTITY)
 		})
 	})
 }
 
-func Test_CART_ADDED(t *testing.T) {
-	Convey("Create Cart Test Integration", t, func() {
+func Test_AddProductToCart(t *testing.T) {
+	Convey("Given that i add valid product to cart ", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		newCart := cart.NewCart(uint(0), uint(0))
+		newCart := cart.NewCart(uint(1), uint(1))
 		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
-		mockProductRepository.EXPECT().GetProductByID(uint(0)).Return(product.Product{
+		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(product.Product{
+			Model: gorm.Model{
+				ID: uint(1),
+			},
 			ProductInfo: entity_product.ProductInfo{
 				Name:     "Product",
-				Quantity: 1,
+				Quantity: 2,
 			},
 		}, nil)
+		mockProductRepository.EXPECT().UpdateProductQuantity(uint(1), 1).Return(nil)
 		mockCartRepository.EXPECT().Create(*newCart).Return(nil)
-		Convey("User Can Go", func() {
-			err := cartService.AddToCart(uint(0), 0)
+		Convey("Then i product added into my cart", func() {
+			err := cartService.AddToCart(uint(1), 1)
 			So(err, ShouldBeNil)
 		})
 	})
 }
 
-func Test_CART_NOT_FOUND(t *testing.T) {
-	Convey("Create Cart Test Integration", t, func() {
+func Test_UserNotFound(t *testing.T) {
+	Convey("Given that i tried to add product to cart with invalid user", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
@@ -63,7 +67,7 @@ func Test_CART_NOT_FOUND(t *testing.T) {
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockCartRepository.EXPECT().GetCartsByUserID(uint(1)).Return([]cart.Cart{}, gorm.ErrRecordNotFound)
-		Convey("User Can Go", func() {
+		Convey("Then i get record not found error", func() {
 			products, err := cartService.GetCartByUserID(uint(1))
 			So(err, ShouldResemble, gorm.ErrRecordNotFound)
 			So(products, ShouldBeNil)
@@ -71,16 +75,18 @@ func Test_CART_NOT_FOUND(t *testing.T) {
 	})
 }
 
-func Test_CART_DELETED(t *testing.T) {
-	Convey("Create Cart Test Integration", t, func() {
+func Test_DeleteProductFromCart(t *testing.T) {
+	Convey("Given that i tried to delete product from cart", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
+		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(product.Product{}, nil)
+		mockProductRepository.EXPECT().UpdateProductQuantity(uint(1), 1).Return(nil)
 		mockCartRepository.EXPECT().Delete(uint(1), uint(1)).Return(nil)
-		Convey("User Can Go", func() {
+		Convey("Then product deleted from cart", func() {
 			err := cartService.DeleteFromCart(uint(1), 1)
 			So(err, ShouldBeNil)
 		})
@@ -88,15 +94,17 @@ func Test_CART_DELETED(t *testing.T) {
 }
 
 func Test_CartDeleteFailed(t *testing.T) {
-	Convey("Create Cart Test Integration", t, func() {
+	Convey("Given that i tried to delete invalid product from cart", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
+		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(product.Product{}, nil)
+		mockProductRepository.EXPECT().UpdateProductQuantity(uint(1), 1).Return(nil)
 		mockCartRepository.EXPECT().Delete(uint(1), uint(1)).Return(gorm.ErrRecordNotFound)
-		Convey("User Can Go", func() {
+		Convey("Then i get record not found error", func() {
 			err := cartService.DeleteFromCart(uint(1), 1)
 			So(err, ShouldResemble, gorm.ErrRecordNotFound)
 		})
@@ -116,7 +124,6 @@ func Test_CalculatePriceNoDiscount(t *testing.T) {
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockOrderRepository.EXPECT().GetOrderByUserID(uint(1)).Return([]order.Order{}, nil)
 		mockOrderRepository.EXPECT().GetOrderFromLastMonth(uint(1)).Return([]order.Order{}, nil)
-
 		Convey("User Can Go", func() {
 			price, vatOfCart := cartService.CalculatePrice(products, uint(1))
 			So(vatOfCart, ShouldEqual, 18)
@@ -155,7 +162,7 @@ func Test_CalculatePriceApplyMonthlyDiscount(t *testing.T) {
 		mockOrderRepository.EXPECT().GetOrderFromLastMonth(uint(1)).Return([]order.Order{
 			{OrderInfo: entity_order.OrderInfo{UserID: 1, TotalPrice: 50000}},
 		}, nil)
-		Convey("Apply monthly discount price", func() {
+		Convey("Then apply monthly discount price", func() {
 			price, vatOfCart := cartService.CalculatePrice(test_data.ProductList, uint(1))
 			So(vatOfCart, ShouldEqual, 111.6)
 			So(price, ShouldEqual, 1101.6)
@@ -177,7 +184,7 @@ func Test_CalculatePriceApplyForthOrderDiscount(t *testing.T) {
 			{OrderInfo: entity_order.OrderInfo{UserID: 1, TotalPrice: 50000}},
 		}, nil)
 		mockOrderRepository.EXPECT().GetOrderFromLastMonth(uint(1)).Return([]order.Order{}, nil)
-		Convey("Apply forth order discount price", func() {
+		Convey("Then apply forth order discount price", func() {
 			price, vatOfCart := cartService.CalculatePrice(test_data.ProductList, uint(1))
 			So(vatOfCart, ShouldEqual, 107.3)
 			So(price, ShouldEqual, 1092.3)

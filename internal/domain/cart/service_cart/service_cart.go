@@ -38,9 +38,13 @@ func (c *CartService) AddToCart(userID, productID uint) error {
 		return err
 	}
 	if selectedProduct.ProductInfo.Quantity == 0 {
-		return messages.PRODUCT_NOT_FOUND
+		return messages.NOT_ENOUGH_QUANTITY
 	}
+	err = c.ProductRepo.UpdateProductQuantity(productID, selectedProduct.ProductInfo.Quantity-1)
 
+	if err != nil {
+		return err
+	}
 	if err := c.CartRepo.Create(*newCart); err != nil {
 		return err
 	}
@@ -49,6 +53,15 @@ func (c *CartService) AddToCart(userID, productID uint) error {
 }
 
 func (c *CartService) DeleteFromCart(userID, productID uint) error {
+	selectedProduct, err := c.ProductRepo.GetProductByID(productID)
+	if err != nil {
+		return err
+	}
+
+	err = c.ProductRepo.UpdateProductQuantity(productID, selectedProduct.ProductInfo.Quantity+1)
+	if err != nil {
+		return err
+	}
 	return c.CartRepo.Delete(userID, productID)
 }
 
