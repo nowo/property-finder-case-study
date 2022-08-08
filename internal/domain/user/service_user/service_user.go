@@ -12,6 +12,12 @@ import (
 	_jwt "property-finder-go-bootcamp-homework/pkg/jwt"
 )
 
+// IUserService interface contains all methods that are required to implement by service_user.
+type IUserService interface {
+	Register(_user user.User) (general.Token, error)
+	Login(_dto auth.LoginRequest) (general.Token, error)
+}
+
 //UserService struct contains all methods that are required to implement by service_user.
 type UserService struct {
 	Repo repository_user.IUserRepository
@@ -28,7 +34,10 @@ func New(repo repository_user.IUserRepository) IUserService {
 
 //Register creates a new user by checking email is exist
 func (u *UserService) Register(_user user.User) (general.Token, error) {
-	emailExist, _ := u.Repo.CheckEmailExists(_user.UserInfo.Email)
+	emailExist, err := u.Repo.CheckEmailExists(_user.UserInfo.Email)
+	if err != nil {
+		return general.Token{}, err
+	}
 
 	if emailExist {
 		return general.Token{}, errors.NewEmailAlreadyExist(_user.UserInfo.Email)

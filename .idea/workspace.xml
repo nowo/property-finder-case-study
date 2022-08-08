@@ -8,43 +8,24 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/server" beforeDir="false" afterPath="$PROJECT_DIR$/build/server" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto/general/general.go" beforeDir="false" afterPath="$PROJECT_DIR$/dto/general/general.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/.config/endpoints.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/.config/endpoints.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/handler/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/handler/auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/handler/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/handler/cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/handler/order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/handler/order.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/api/handler/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/api/handler/product.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/application/application.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/application/application.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/entity_cart/entity_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/entity_cart/entity_cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/repository_cart/irepository_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/repository_cart/irepository_cart.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/cart/repository_cart/irepository_cart.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/domain/cart/repository_cart/repository_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/repository_cart/repository_cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/iservice_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/iservice_cart.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/iservice_cart.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/order/entity_order/entity_order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/entity_order/entity_order.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/order/order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/order.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/order/repository_order/irepository_order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/repository_order/irepository_order.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/order/repository_order/irepository_order.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/domain/order/repository_order/repository_order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/repository_order/repository_order.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/order/service_order/iservice_order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/service_order/iservice_order.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/order/service_order/service_order.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/service_order/service_order.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/order/service_order/service_order_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/service_order/service_order_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/product/entity_product/entity_product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/entity_product/entity_product.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/product/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/product.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/product/repository_product/irepository_product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/repository_product/irepository_product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/repository_product/irepository_product.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/domain/product/repository_product/repository_product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/repository_product/repository_product.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/product/service_product/iservice_product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/service_product/iservice_product.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/product/service_product/iservice_product.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/domain/product/service_product/service_product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/service_product/service_product.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/user/entity_user/entity_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/entity_user/entity_user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/user/repository_user/irepository_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/repository_user/irepository_user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/repository_user/irepository_user.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/domain/user/repository_user/repository_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/repository_user/repository_user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/user/service_user/iservice_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/service_user/iservice_user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/user/service_user/iservice_user.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/domain/user/service_user/service_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/service_user/service_user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/user/service_user/service_user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/service_user/service_user_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/errors/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/errors/errors.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/logger/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/logger/logger.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/mocks/cart_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/cart_repository_mock.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_data/mocks/order_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/order_repository_mock.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/mocks/product_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/product_repository_mock.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_data/mocks/user_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/user_repository_mock.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +48,6 @@
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/golang/mock@v1.6.0/gomock/controller.go" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/internal/api/handler/auth.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/internal/domain/user/repository_user/irepository_user.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/internal/domain/user/repository_user/repository_user.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/internal/domain/user/service_user/service_user.go" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -99,6 +79,13 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="GoMoveDeclarationDialog.RECENT_KEY">
+      <recent name="$PROJECT_DIR$/internal/domain/cart/repository_cart" />
+      <recent name="$PROJECT_DIR$/internal/domain/cart/service_cart" />
+      <recent name="$PROJECT_DIR$/internal/domain/order/repository_order" />
+      <recent name="$PROJECT_DIR$/internal/domain/product/repository_product" />
+      <recent name="$PROJECT_DIR$/internal/domain/product/service_product" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/internal/domain/user/service_user" />
       <recent name="$PROJECT_DIR$/internal/domain/product/service_product" />

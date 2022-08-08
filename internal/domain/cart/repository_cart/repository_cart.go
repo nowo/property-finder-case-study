@@ -90,3 +90,12 @@ func (r *CartRepository) Complete(userID, orderID uint) error {
 
 	return nil
 }
+
+// ICartRepository interface contains all methods that are required to implement by repository_cart.
+type ICartRepository interface {
+	GetCartsByUserID(userID uint) ([]cart.Cart, error)
+	Create(newCart cart.Cart) error
+	CountByProductID(productID uint) (int64, error)
+	Delete(userID, productID uint) error
+	Complete(userID, OrderID uint) error
+}

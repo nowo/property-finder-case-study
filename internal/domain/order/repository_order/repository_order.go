@@ -9,6 +9,13 @@ import (
 	"time"
 )
 
+// IOrderRepository interface contains all methods that are required to implement by repository_order.
+type IOrderRepository interface {
+	CreateOrder(newOrder order.Order) (order.Order, error)
+	GetOrderByUserID(userID uint) ([]order.Order, error)
+	GetOrderFromLastMonth(userID uint) ([]order.Order, error)
+}
+
 // OrderRepository is a struct that implements IOrderRepository interface.
 type OrderRepository struct {
 }

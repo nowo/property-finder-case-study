@@ -1,7 +1,6 @@
 package service_cart
 
 import (
-	"fmt"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
 	"property-finder-go-bootcamp-homework/internal/domain/cart"
 	"property-finder-go-bootcamp-homework/internal/domain/cart/repository_cart"
@@ -11,6 +10,14 @@ import (
 	"property-finder-go-bootcamp-homework/pkg/constants"
 	_jwt "property-finder-go-bootcamp-homework/pkg/jwt"
 )
+
+// ICartService interface contains all methods that are required to implement by service_cart.
+type ICartService interface {
+	AddToCart(userID, productID uint) error
+	DeleteFromCart(userID, productID uint) error
+	GetCartByUserID(userID uint) ([]product.Product, error)
+	CalculatePrice(cartList []product.Product, userID uint) (float64, float64)
+}
 
 //cart service struct include cart repository, product repository, order repository and jwt
 type CartService struct {
@@ -128,17 +135,14 @@ func (c *CartService) applySameProductDiscountPrice(productList []product.Produc
 	for _, product := range productList {
 		productCountById[product]++
 	}
-	fmt.Println("productmap")
-	fmt.Println(productCountById)
-	fmt.Println("productlist")
-	fmt.Println(productList)
-
+	discountOrderCount := constants.SameProductDiscountCount - 1
 	for selectedProduct, productCount := range productCountById {
-		if productCount > 3 {
+		if productCount > discountOrderCount {
+			//Todo: bu magic number olan 3u sil
 			vat := (selectedProduct.ProductInfo.Price * float64(selectedProduct.ProductInfo.Vat)) / 100
-			vatOfCart += vat*3 + vat*float64(productCount-3)*0.8
+			vatOfCart += vat*float64(discountOrderCount) + vat*float64(productCount-discountOrderCount)*0.8
 			price := selectedProduct.ProductInfo.Price + vat
-			totalPrice += price*3 + price*float64(productCount-3)*0.8
+			totalPrice += price*float64(discountOrderCount) + price*float64(productCount-discountOrderCount)*0.8
 		} else {
 			vat := (selectedProduct.ProductInfo.Price * float64(selectedProduct.ProductInfo.Vat)) / 100
 			vatOfCart += vat

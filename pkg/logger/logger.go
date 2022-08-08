@@ -14,6 +14,7 @@ import (
 
 var logger = logrus.New()
 
+//loglari standart ioya yaz
 const (
 	skipFrameCount    = 4
 	splitAfterPkgName = "property-finder-go-bootcamp-homework/"

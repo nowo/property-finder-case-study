@@ -5,6 +5,12 @@ import (
 	"property-finder-go-bootcamp-homework/internal/domain/product/repository_product"
 )
 
+// IServiceProduct interface contains all methods that are required to implement by service_product.
+type IServiceProduct interface {
+	GetAll() ([]domain.Product, error)
+	GetByID(id uint) (domain.Product, error)
+}
+
 // ProductService is a struct that implements the IServiceProduct interface.
 type ProductService struct {
 	Repo repository_product.IProductRepository
