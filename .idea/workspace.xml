@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa38f25d-57c5-4e70-8b7c-1649619f50d7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/github-actions.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/github-actions.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/configurationCache.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/configurationCache.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/dryrun.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/dryrun.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/targets.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/targets.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -55,8 +55,8 @@ These environment variables are accepted:
 - PORT
 - GIVEN_AMOUNT
 -
-#### There is no product by default. Because of that you must include product by yourself.  To insert product add this command to <b>connection.go<b> file inside to Migration function before
-
+#### There is no product by default. Because of that you must include product by yourself.  To insert product add this command to <b>connection.go<b> file inside to Migration function
+  ```
         Db.AutoMigrate(&Product{})
         db.Model(&Product{}).AddForeignKey("basket_id", "baskets(id)", "CASCADE", "CASCADE")
         /*
@@ -71,21 +71,20 @@ These environment variables are accepted:
         },
         }
         DB.Create(&newProduct)
-        fmt.Println("Migration completed")
-        */
+        DB.AutoMigrate(&user.User{}, &product.Product{}, &cart.Cart{}, &order.Order{})
+```
+To run project with docker, type this command. This command will create server and postqresql images
+ ```
+ $  docker compose up
+ ```
 
-        To run project with docker, type this command. This command will create server and postqresql images
-        ```
-        $  docker compose up
-        ```
-
-        ## [test](#test)
-        #### To run tests type these commands sequentially
-        ```
-        $ make install-dependencies
-        $ make make-mocks
-        $ make run-test
-        ```
+ ## [test](#test)
+ #### To run tests type these commands sequentially
+ ```
+ $ make install-dependencies
+ $ make make-mocks
+ $ make run-test
+ ```
 
 
 
