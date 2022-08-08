@@ -1,5 +1,8 @@
-test:
-	go test ./...
+install-dependencies:
+	 go install gotest.tools/gotestsum@latest
+
+run-test:
+	gotestsum --format testname
 
 run:
 	go run ./cmd
@@ -12,10 +15,6 @@ docker-run:
 
 docker-develop:
 	docker run --name property-finder-case-study-server-1 --env-file ./.env -p 8000:8000 -v `pwd`:`pwd` -w `pwd` -i -t -d property-finder-case-study-server-1
-
-docker-test:
-	docker exec -it property-finder-case-study-server-1 go test ./test/... -v
-
 
 make-mocks:
 	mockgen -source=internal/domain/user/repository_user/irepository_user.go -destination=test/mocks/user_repository_mock.go -package=mocks

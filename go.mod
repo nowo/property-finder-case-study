@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/go-resty/resty/v2 v2.7.0
 	github.com/gofiber/jwt/v2 v2.2.7
+	github.com/golang/mock v1.6.0
 	github.com/sirupsen/logrus v1.9.0
 	gorm.io/driver/postgres v1.3.8
 	gorm.io/gorm v1.23.8
@@ -15,7 +16,6 @@ require (
 	github.com/andybalholm/brotli v1.0.4 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/golang-jwt/jwt/v4 v4.0.0 // indirect
-	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.8 // indirect
 	github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1 // indirect

@@ -1,6 +1,7 @@
 package service_cart
 
 import (
+	"fmt"
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
 	"property-finder-go-bootcamp-homework/internal/domain/cart"
 	"property-finder-go-bootcamp-homework/internal/domain/cart/repository_cart"
@@ -110,6 +111,10 @@ func (c *CartService) applySameProductDiscountPrice(productList []product.Produc
 	for _, product := range productList {
 		productCountById[product]++
 	}
+	fmt.Println("productmap")
+	fmt.Println(productCountById)
+	fmt.Println("productlist")
+	fmt.Println(productList)
 
 	for selectedProduct, productCount := range productCountById {
 		if productCount > 3 {
