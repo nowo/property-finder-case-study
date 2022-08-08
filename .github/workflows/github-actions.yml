@@ -19,6 +19,20 @@ jobs:
         with:
           go-version: 1.18
 
+      - name: Create env file
+        run:
+          touch .env
+          echo "POSTGRES_HOST=database
+          POSTGRES_PORT=5432
+          POSTGRES_USER=postgres
+          POSTGRES_PASS=mysecretpassword
+          POSTGRES_DB=mydb
+          POSTGRES_SSL=disable
+          POSTGRES_HOST_AUTH_METHOD=trust
+          JWT_SECRET_KEY=47odVACvzCPLwObhhTybose4m2E2uq783v8hvuMYKKQCK0oGAy
+          PORT=8080
+          GIVEN_AMOUNT=500" > .env
+
       - name: Build
         run: make run
 
