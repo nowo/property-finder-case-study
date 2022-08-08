@@ -6,20 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fa38f25d-57c5-4e70-8b7c-1649619f50d7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/server" beforeDir="false" afterPath="$PROJECT_DIR$/build/server" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/.config/messages/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/.config/messages/errors.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/order/service_order/service_order_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/service_order/service_order_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/product/repository_product/irepository_product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/repository_product/irepository_product.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/product/repository_product/repository_product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/repository_product/repository_product.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/product/service_product/service_product_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/service_product/service_product_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/user/service_user/service_user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/service_user/service_user_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/mocks/product_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/product_repository_mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/mocks/register.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/mocks/user_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/mocks/user_repository_mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/testData.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/testData.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
