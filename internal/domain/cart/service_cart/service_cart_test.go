@@ -11,7 +11,7 @@ import (
 	"property-finder-go-bootcamp-homework/internal/domain/product"
 	"property-finder-go-bootcamp-homework/internal/domain/product/entity_product"
 	"property-finder-go-bootcamp-homework/test_data"
-	"property-finder-go-bootcamp-homework/test_data/mocks"
+	"property-finder-go-bootcamp-homework/test_data/repository_mocks"
 	"testing"
 )
 
@@ -19,9 +19,9 @@ func Test_ProductNotFound(t *testing.T) {
 	Convey("Given that i tried to add unable product to cart ", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
-		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockOrderRepository := repository_mocks.NewMockIOrderRepository(mockCtrl)
+		mockCartRepository := repository_mocks.NewMockICartRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(product.Product{}, nil)
 		Convey("Then i get product not enough quantity  error", func() {
@@ -36,9 +36,9 @@ func Test_AddProductToCart(t *testing.T) {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		newCart := cart.NewCart(uint(1), uint(1))
-		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
-		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockOrderRepository := repository_mocks.NewMockIOrderRepository(mockCtrl)
+		mockCartRepository := repository_mocks.NewMockICartRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(product.Product{
 			Model: gorm.Model{
@@ -62,9 +62,9 @@ func Test_UserNotFound(t *testing.T) {
 	Convey("Given that i tried to add product to cart with invalid user", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
-		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockOrderRepository := repository_mocks.NewMockIOrderRepository(mockCtrl)
+		mockCartRepository := repository_mocks.NewMockICartRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockCartRepository.EXPECT().GetCartsByUserID(uint(1)).Return([]cart.Cart{}, gorm.ErrRecordNotFound)
 		Convey("Then i get record not found error", func() {
@@ -79,9 +79,9 @@ func Test_DeleteProductFromCart(t *testing.T) {
 	Convey("Given that i tried to delete product from cart", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
-		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockOrderRepository := repository_mocks.NewMockIOrderRepository(mockCtrl)
+		mockCartRepository := repository_mocks.NewMockICartRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(product.Product{}, nil)
 		mockProductRepository.EXPECT().UpdateProductQuantity(uint(1), 1).Return(nil)
@@ -97,9 +97,9 @@ func Test_CartDeleteFailed(t *testing.T) {
 	Convey("Given that i tried to delete invalid product from cart", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
-		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockOrderRepository := repository_mocks.NewMockIOrderRepository(mockCtrl)
+		mockCartRepository := repository_mocks.NewMockICartRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(product.Product{}, nil)
 		mockProductRepository.EXPECT().UpdateProductQuantity(uint(1), 1).Return(nil)
@@ -118,9 +118,9 @@ func Test_CalculatePriceNoDiscount(t *testing.T) {
 		products := []product.Product{
 			{ProductInfo: entity_product.ProductInfo{Name: "Product", Quantity: 1, Price: 100, Vat: 18}},
 		}
-		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
-		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockOrderRepository := repository_mocks.NewMockIOrderRepository(mockCtrl)
+		mockCartRepository := repository_mocks.NewMockICartRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockOrderRepository.EXPECT().GetOrderByUserID(uint(1)).Return([]order.Order{}, nil)
 		mockOrderRepository.EXPECT().GetOrderFromLastMonth(uint(1)).Return([]order.Order{}, nil)
@@ -136,9 +136,9 @@ func Test_CalculatePiceApplyAfterThreeProductDiscount(t *testing.T) {
 	Convey("Given user has same product more than three", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
-		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockOrderRepository := repository_mocks.NewMockIOrderRepository(mockCtrl)
+		mockCartRepository := repository_mocks.NewMockICartRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockOrderRepository.EXPECT().GetOrderByUserID(uint(1)).Return([]order.Order{}, nil)
 		mockOrderRepository.EXPECT().GetOrderFromLastMonth(uint(1)).Return([]order.Order{}, nil)
@@ -154,9 +154,9 @@ func Test_CalculatePriceApplyMonthlyDiscount(t *testing.T) {
 	Convey("Given User Passed Given Amount", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
-		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockOrderRepository := repository_mocks.NewMockIOrderRepository(mockCtrl)
+		mockCartRepository := repository_mocks.NewMockICartRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockOrderRepository.EXPECT().GetOrderByUserID(uint(1)).Return([]order.Order{}, nil)
 		mockOrderRepository.EXPECT().GetOrderFromLastMonth(uint(1)).Return([]order.Order{
@@ -174,9 +174,9 @@ func Test_CalculatePriceApplyForthOrderDiscount(t *testing.T) {
 	Convey("Given User Passed Given Amount", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
-		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockOrderRepository := repository_mocks.NewMockIOrderRepository(mockCtrl)
+		mockCartRepository := repository_mocks.NewMockICartRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
 		mockOrderRepository.EXPECT().GetOrderByUserID(uint(1)).Return([]order.Order{
 			{OrderInfo: entity_order.OrderInfo{UserID: 1, TotalPrice: 50000}},

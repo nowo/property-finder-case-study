@@ -7,7 +7,7 @@ import (
 	"property-finder-go-bootcamp-homework/internal/.config/messages"
 	domain "property-finder-go-bootcamp-homework/internal/domain/product"
 	"property-finder-go-bootcamp-homework/internal/domain/product/entity_product"
-	"property-finder-go-bootcamp-homework/test_data/mocks"
+	"property-finder-go-bootcamp-homework/test_data/repository_mocks"
 	"testing"
 )
 
@@ -15,7 +15,7 @@ func Test_GetAllProducts(t *testing.T) {
 	Convey("Given that i tried to get all products", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		productService := New(mockProductRepository)
 		mockProductRepository.EXPECT().ShowAllProducts().Return([]domain.Product{}, nil)
 		Convey("Then i get all products", func() {
@@ -30,7 +30,7 @@ func Test_GetProductByID(t *testing.T) {
 	Convey("Given that i tried to get spesific product with id", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		productService := New(mockProductRepository)
 		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(domain.Product{
 			gorm.Model{
@@ -52,7 +52,7 @@ func TestProductNotFound(t *testing.T) {
 	Convey("Given that i searched invalid product", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		productService := New(mockProductRepository)
 		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(domain.Product{}, gorm.ErrRecordNotFound)
 		Convey("Then i get error", func() {
@@ -67,7 +67,7 @@ func Test_Product_Service_Error(t *testing.T) {
 	Convey("Given that databased bugged when searching product", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
+		mockProductRepository := repository_mocks.NewMockIProductRepository(mockCtrl)
 		productService := New(mockProductRepository)
 		mockProductRepository.EXPECT().GetProductByID(uint(1)).Return(domain.Product{}, messages.DATABASE_OPERATION_FAILED)
 		Convey("Then i get database operation failed error", func() {
