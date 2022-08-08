@@ -54,7 +54,6 @@ These environment variables are accepted:
 - JWT_SECRET_KEY
 - PORT
 - GIVEN_AMOUNT
--
 #### There is no product by default. Because of that you must include product by yourself.  To insert product add this command to <b>connection.go<b> file inside to Migration function
   ```
         Db.AutoMigrate(&Product{})
@@ -85,6 +84,7 @@ To run project with docker, type this command. This command will create server a
  $ make make-mocks
  $ make run-test
  ```
+[Postman Collection](https://www.getpostman.com/collections/75927569d91874c368bf)
 
 
 
