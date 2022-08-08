@@ -6,14 +6,12 @@ import (
 	"property-finder-go-bootcamp-homework/pkg/errors"
 )
 
-type Repository struct {
+//UserRepository is a struct that implements IUserRepository interface
+type UserRepository struct {
 }
 
-func New() IRepository {
-	return &Repository{}
-}
-
-func (r *Repository) CheckEmailExists(email string) (bool, error) {
+//CheckEmailExists checks if email exists in database
+func (r *UserRepository) CheckEmailExists(email string) (bool, error) {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)
 	user := new(user.User)
@@ -25,7 +23,8 @@ func (r *Repository) CheckEmailExists(email string) (bool, error) {
 	return true, errors.NewEmailAlreadyExist(email)
 }
 
-func (r *Repository) GetUserInfoByEmail(email string) (user.User, error) {
+//GetUserInfoByEmail returns user by email
+func (r *UserRepository) GetUserInfoByEmail(email string) (user.User, error) {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)
 
@@ -38,7 +37,8 @@ func (r *Repository) GetUserInfoByEmail(email string) (user.User, error) {
 	return *newUser, nil
 }
 
-func (r *Repository) Create(newUser user.User) (user.User, error) {
+//Create creates a new user
+func (r *UserRepository) Create(newUser user.User) (user.User, error) {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)
 

@@ -11,31 +11,31 @@ import (
 	gomock "github.com/golang/mock/gomock"
 )
 
-// MockIRepositoryOrder is a mock of IRepositoryOrder interface.
-type MockIRepositoryOrder struct {
+// MockIOrderRepository is a mock of IOrderRepository interface.
+type MockIOrderRepository struct {
 	ctrl     *gomock.Controller
-	recorder *MockIRepositoryOrderMockRecorder
+	recorder *MockIOrderRepositoryMockRecorder
 }
 
-// MockIRepositoryOrderMockRecorder is the mock recorder for MockIRepositoryOrder.
-type MockIRepositoryOrderMockRecorder struct {
-	mock *MockIRepositoryOrder
+// MockIOrderRepositoryMockRecorder is the mock recorder for MockIOrderRepository.
+type MockIOrderRepositoryMockRecorder struct {
+	mock *MockIOrderRepository
 }
 
-// NewMockIRepositoryOrder creates a new mock instance.
-func NewMockIRepositoryOrder(ctrl *gomock.Controller) *MockIRepositoryOrder {
-	mock := &MockIRepositoryOrder{ctrl: ctrl}
-	mock.recorder = &MockIRepositoryOrderMockRecorder{mock}
+// NewMockIOrderRepository creates a new mock instance.
+func NewMockIOrderRepository(ctrl *gomock.Controller) *MockIOrderRepository {
+	mock := &MockIOrderRepository{ctrl: ctrl}
+	mock.recorder = &MockIOrderRepositoryMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockIRepositoryOrder) EXPECT() *MockIRepositoryOrderMockRecorder {
+func (m *MockIOrderRepository) EXPECT() *MockIOrderRepositoryMockRecorder {
 	return m.recorder
 }
 
 // CreateOrder mocks base method.
-func (m *MockIRepositoryOrder) CreateOrder(newOrder order.Order) (order.Order, error) {
+func (m *MockIOrderRepository) CreateOrder(newOrder order.Order) (order.Order, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "CreateOrder", newOrder)
 	ret0, _ := ret[0].(order.Order)
@@ -44,13 +44,13 @@ func (m *MockIRepositoryOrder) CreateOrder(newOrder order.Order) (order.Order, e
 }
 
 // CreateOrder indicates an expected call of CreateOrder.
-func (mr *MockIRepositoryOrderMockRecorder) CreateOrder(newOrder interface{}) *gomock.Call {
+func (mr *MockIOrderRepositoryMockRecorder) CreateOrder(newOrder interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateOrder", reflect.TypeOf((*MockIRepositoryOrder)(nil).CreateOrder), newOrder)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateOrder", reflect.TypeOf((*MockIOrderRepository)(nil).CreateOrder), newOrder)
 }
 
 // GetOrderByUserID mocks base method.
-func (m *MockIRepositoryOrder) GetOrderByUserID(userID uint) ([]order.Order, error) {
+func (m *MockIOrderRepository) GetOrderByUserID(userID uint) ([]order.Order, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetOrderByUserID", userID)
 	ret0, _ := ret[0].([]order.Order)
@@ -59,13 +59,13 @@ func (m *MockIRepositoryOrder) GetOrderByUserID(userID uint) ([]order.Order, err
 }
 
 // GetOrderByUserID indicates an expected call of GetOrderByUserID.
-func (mr *MockIRepositoryOrderMockRecorder) GetOrderByUserID(userID interface{}) *gomock.Call {
+func (mr *MockIOrderRepositoryMockRecorder) GetOrderByUserID(userID interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOrderByUserID", reflect.TypeOf((*MockIRepositoryOrder)(nil).GetOrderByUserID), userID)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOrderByUserID", reflect.TypeOf((*MockIOrderRepository)(nil).GetOrderByUserID), userID)
 }
 
 // GetOrderFromLastMonth mocks base method.
-func (m *MockIRepositoryOrder) GetOrderFromLastMonth(userID uint) ([]order.Order, error) {
+func (m *MockIOrderRepository) GetOrderFromLastMonth(userID uint) ([]order.Order, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetOrderFromLastMonth", userID)
 	ret0, _ := ret[0].([]order.Order)
@@ -74,7 +74,7 @@ func (m *MockIRepositoryOrder) GetOrderFromLastMonth(userID uint) ([]order.Order
 }
 
 // GetOrderFromLastMonth indicates an expected call of GetOrderFromLastMonth.
-func (mr *MockIRepositoryOrderMockRecorder) GetOrderFromLastMonth(userID interface{}) *gomock.Call {
+func (mr *MockIOrderRepositoryMockRecorder) GetOrderFromLastMonth(userID interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOrderFromLastMonth", reflect.TypeOf((*MockIRepositoryOrder)(nil).GetOrderFromLastMonth), userID)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetOrderFromLastMonth", reflect.TypeOf((*MockIOrderRepository)(nil).GetOrderFromLastMonth), userID)
 }

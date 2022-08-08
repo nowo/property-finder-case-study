@@ -1,4 +1,5 @@
 install-dependencies:
+	 go install github.com/jstemmer/go-junit-report@latest
 	 go install gotest.tools/gotestsum@latest
 
 run-test:

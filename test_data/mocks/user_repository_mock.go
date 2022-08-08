@@ -11,31 +11,31 @@ import (
 	gomock "github.com/golang/mock/gomock"
 )
 
-// MockIRepository is a mock of IRepository interface.
-type MockIRepository struct {
+// MockIUserRepository is a mock of IUserRepository interface.
+type MockIUserRepository struct {
 	ctrl     *gomock.Controller
-	recorder *MockIRepositoryMockRecorder
+	recorder *MockIUserRepositoryMockRecorder
 }
 
-// MockIRepositoryMockRecorder is the mock recorder for MockIRepository.
-type MockIRepositoryMockRecorder struct {
-	mock *MockIRepository
+// MockIUserRepositoryMockRecorder is the mock recorder for MockIUserRepository.
+type MockIUserRepositoryMockRecorder struct {
+	mock *MockIUserRepository
 }
 
-// NewMockIRepository creates a new mock instance.
-func NewMockIRepository(ctrl *gomock.Controller) *MockIRepository {
-	mock := &MockIRepository{ctrl: ctrl}
-	mock.recorder = &MockIRepositoryMockRecorder{mock}
+// NewMockIUserRepository creates a new mock instance.
+func NewMockIUserRepository(ctrl *gomock.Controller) *MockIUserRepository {
+	mock := &MockIUserRepository{ctrl: ctrl}
+	mock.recorder = &MockIUserRepositoryMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockIRepository) EXPECT() *MockIRepositoryMockRecorder {
+func (m *MockIUserRepository) EXPECT() *MockIUserRepositoryMockRecorder {
 	return m.recorder
 }
 
 // CheckEmailExists mocks base method.
-func (m *MockIRepository) CheckEmailExists(email string) (bool, error) {
+func (m *MockIUserRepository) CheckEmailExists(email string) (bool, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "CheckEmailExists", email)
 	ret0, _ := ret[0].(bool)
@@ -44,13 +44,13 @@ func (m *MockIRepository) CheckEmailExists(email string) (bool, error) {
 }
 
 // CheckEmailExists indicates an expected call of CheckEmailExists.
-func (mr *MockIRepositoryMockRecorder) CheckEmailExists(email interface{}) *gomock.Call {
+func (mr *MockIUserRepositoryMockRecorder) CheckEmailExists(email interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CheckEmailExists", reflect.TypeOf((*MockIRepository)(nil).CheckEmailExists), email)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CheckEmailExists", reflect.TypeOf((*MockIUserRepository)(nil).CheckEmailExists), email)
 }
 
 // Create mocks base method.
-func (m *MockIRepository) Create(newUser user.User) (user.User, error) {
+func (m *MockIUserRepository) Create(newUser user.User) (user.User, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Create", newUser)
 	ret0, _ := ret[0].(user.User)
@@ -59,13 +59,13 @@ func (m *MockIRepository) Create(newUser user.User) (user.User, error) {
 }
 
 // Create indicates an expected call of Create.
-func (mr *MockIRepositoryMockRecorder) Create(newUser interface{}) *gomock.Call {
+func (mr *MockIUserRepositoryMockRecorder) Create(newUser interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockIRepository)(nil).Create), newUser)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockIUserRepository)(nil).Create), newUser)
 }
 
 // GetUserInfoByEmail mocks base method.
-func (m *MockIRepository) GetUserInfoByEmail(email string) (user.User, error) {
+func (m *MockIUserRepository) GetUserInfoByEmail(email string) (user.User, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetUserInfoByEmail", email)
 	ret0, _ := ret[0].(user.User)
@@ -74,7 +74,7 @@ func (m *MockIRepository) GetUserInfoByEmail(email string) (user.User, error) {
 }
 
 // GetUserInfoByEmail indicates an expected call of GetUserInfoByEmail.
-func (mr *MockIRepositoryMockRecorder) GetUserInfoByEmail(email interface{}) *gomock.Call {
+func (mr *MockIUserRepositoryMockRecorder) GetUserInfoByEmail(email interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserInfoByEmail", reflect.TypeOf((*MockIRepository)(nil).GetUserInfoByEmail), email)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserInfoByEmail", reflect.TypeOf((*MockIUserRepository)(nil).GetUserInfoByEmail), email)
 }

@@ -12,9 +12,9 @@ import (
 	"property-finder-go-bootcamp-homework/pkg/logger"
 )
 
+//Create order api handler. Complete order from carts of user. It also calculate total price of order.
 func CreateOrder(c *fiber.Ctx) error {
 	userID := c.Locals("userID").(float64)
-
 	cartService := service_cart.New(&repository_cart.CartRepository{}, &repository_product.ProductRepository{}, &repository_order.OrderRepository{})
 	orderService := service_order.New(&repository_cart.CartRepository{}, &repository_order.OrderRepository{})
 	productList, err := cartService.GetCartByUserID(uint(userID))
@@ -51,6 +51,7 @@ func CreateOrder(c *fiber.Ctx) error {
 	})
 }
 
+//List user's all orders
 func ListOrders(c *fiber.Ctx) error {
 	userID := c.Locals("userID").(float64)
 	orderService := service_order.New(&repository_cart.CartRepository{}, &repository_order.OrderRepository{})

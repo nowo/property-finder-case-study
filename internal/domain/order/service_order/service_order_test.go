@@ -14,7 +14,7 @@ func Test_GetOrderByID(t *testing.T) {
 	Convey("Given that i tried to get my orders", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		orderService := New(mockCartRepository, mockOrderRepository)
 		mockOrderRepository.EXPECT().GetOrderByUserID(uint(1)).Return([]order.Order{}, nil)
@@ -30,7 +30,7 @@ func Test_OrderNotFound(t *testing.T) {
 	Convey("Given that i tried to search not found order", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		orderService := New(mockCartRepository, mockOrderRepository)
 		mockOrderRepository.EXPECT().GetOrderByUserID(uint(1)).Return([]order.Order{}, gorm.ErrRecordNotFound)
@@ -46,7 +46,7 @@ func Test_CreateOrder(t *testing.T) {
 	Convey("Given that i tried to complete my order", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		orderService := New(mockCartRepository, mockOrderRepository)
 		newOrderInfo := entity_order.NewOrderInfo(uint(1), 1, 1)
@@ -65,7 +65,7 @@ func Test_CreateOrderFailed(t *testing.T) {
 	Convey("Given that i tried to complete my order with invalid id ", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		orderService := New(mockCartRepository, mockOrderRepository)
 		newOrderInfo := entity_order.NewOrderInfo(uint(1), 1, 1)

@@ -12,14 +12,16 @@ import (
 	_jwt "property-finder-go-bootcamp-homework/pkg/jwt"
 )
 
+//cart service struct include cart repository, product repository, order repository and jwt
 type CartService struct {
 	CartRepo    repository_cart.ICartRepository
 	ProductRepo repository_product.IProductRepository
-	OrderRepo   repository_order.IRepositoryOrder
+	OrderRepo   repository_order.IOrderRepository
 	jwt         _jwt.JWT
 }
 
-func New(cartRepo repository_cart.ICartRepository, productRepo repository_product.IProductRepository, orderRepo repository_order.IRepositoryOrder) ICartService {
+//Create new instance of cart service interface
+func New(cartRepo repository_cart.ICartRepository, productRepo repository_product.IProductRepository, orderRepo repository_order.IOrderRepository) ICartService {
 	return &CartService{
 		CartRepo:    cartRepo,
 		ProductRepo: productRepo,
@@ -28,7 +30,7 @@ func New(cartRepo repository_cart.ICartRepository, productRepo repository_produc
 	}
 }
 
-// AddToCart implements ICartService
+// AddToCart add product to cart if product quantity is not 0
 func (c *CartService) AddToCart(userID, productID uint) error {
 
 	newCart := cart.NewCart(userID, productID)
@@ -52,6 +54,7 @@ func (c *CartService) AddToCart(userID, productID uint) error {
 	return nil
 }
 
+//Delete cart from product by userID and productID
 func (c *CartService) DeleteFromCart(userID, productID uint) error {
 	selectedProduct, err := c.ProductRepo.GetProductByID(productID)
 	if err != nil {
@@ -65,8 +68,8 @@ func (c *CartService) DeleteFromCart(userID, productID uint) error {
 	return c.CartRepo.Delete(userID, productID)
 }
 
+// GetCartByUserID return cart list by userID
 func (c *CartService) GetCartByUserID(userID uint) ([]product.Product, error) {
-
 	var buyedProducts = make([]product.Product, 0)
 	cartList, err := c.CartRepo.GetCartsByUserID(userID)
 	if err != nil {
@@ -82,27 +85,27 @@ func (c *CartService) GetCartByUserID(userID uint) ([]product.Product, error) {
 	return buyedProducts, nil
 }
 
+//CalculateCartPrice calculate cart price and vat by comparing discount prices
 func (c *CartService) CalculatePrice(cartList []product.Product, userID uint) (float64, float64) {
-
 	var totalPrice float64 = 0
 	var vatOfCart float64 = 0
-
 	for _, product := range cartList {
 		vat := (product.ProductInfo.Price * float64(product.ProductInfo.Vat)) / 100
 		vatOfCart += vat
 		totalPrice += product.ProductInfo.Price + vat
 	}
 
-	discountAPrice, discountBPrice, discountCPrice := totalPrice, totalPrice, totalPrice
-	discountAVat, discountBVat, discountCVat := vatOfCart, vatOfCart, vatOfCart
+	forthOrderDiscountPrice, sameProductDiscountPrice, monthlyDiscountPrice := totalPrice, totalPrice, totalPrice
+	forthOrderDiscountVat, sameProductDiscountVat, monthlyDiscountVat := vatOfCart, vatOfCart, vatOfCart
 
-	discountAPrice, discountAVat = c.applyForthOrderDiscountPrice(cartList, userID, discountAPrice, discountAVat)
-	discountBPrice, discountBVat = c.applySameProductDiscountPrice(cartList)
-	discountCPrice, discountCVat = c.applyMonthlyDiscountPrice(userID, totalPrice, vatOfCart)
+	forthOrderDiscountPrice, forthOrderDiscountVat = c.applyForthOrderDiscountPrice(cartList, userID, forthOrderDiscountPrice, forthOrderDiscountVat)
+	sameProductDiscountPrice, sameProductDiscountVat = c.applySameProductDiscountPrice(cartList)
+	monthlyDiscountPrice, monthlyDiscountVat = c.applyMonthlyDiscountPrice(userID, totalPrice, vatOfCart)
 
-	return getSmallestDiscount(discountAPrice, discountBPrice, discountCPrice), getSmallestDiscount(discountAVat, discountBVat, discountCVat)
+	return getSmallestDiscount(forthOrderDiscountPrice, sameProductDiscountPrice, monthlyDiscountPrice), getSmallestDiscount(forthOrderDiscountVat, sameProductDiscountVat, monthlyDiscountVat)
 }
 
+//compare discount prices and return smallest one
 func getSmallestDiscount(discountA, discountB, discountC float64) float64 {
 	if discountA < discountB {
 		if discountA < discountC {
@@ -116,6 +119,7 @@ func getSmallestDiscount(discountA, discountB, discountC float64) float64 {
 	return discountC
 }
 
+//apply same product discount price if there is more than 3 same product, apply discount after third ones
 func (c *CartService) applySameProductDiscountPrice(productList []product.Product) (float64, float64) {
 	var totalPrice float64 = 0
 	var vatOfCart float64 = 0
@@ -144,6 +148,7 @@ func (c *CartService) applySameProductDiscountPrice(productList []product.Produc
 	return totalPrice, vatOfCart
 }
 
+//if user exceed given amount in a month, apply %10 discount for all subsequent ones
 func (c *CartService) applyMonthlyDiscountPrice(userID uint, totalPrice float64, vatOfCart float64) (float64, float64) {
 	orders, err := c.OrderRepo.GetOrderFromLastMonth(userID)
 	if err != nil {
@@ -160,6 +165,7 @@ func (c *CartService) applyMonthlyDiscountPrice(userID uint, totalPrice float64,
 	return totalPrice - (totalPrice * 0.1), vatOfCart - (vatOfCart * 0.1)
 }
 
+//check is user is on forth order which is exceed given amount
 func (c *CartService) isUserDeservedForthOrderDiscount(userID uint, totalPrice float64) bool {
 	orders, err := c.OrderRepo.GetOrderByUserID(userID)
 	if err != nil {
@@ -179,6 +185,8 @@ func (c *CartService) isUserDeservedForthOrderDiscount(userID uint, totalPrice f
 	}
 	return true
 }
+
+//apply forth order discount price if user is on forth order and exceed given amount
 func (c *CartService) applyForthOrderDiscountPrice(productList []product.Product, userID uint, totalPrice, vatOfCard float64) (float64, float64) {
 	if !c.isUserDeservedForthOrderDiscount(userID, totalPrice) {
 		return totalPrice, vatOfCard

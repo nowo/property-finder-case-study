@@ -8,13 +8,11 @@ import (
 	"property-finder-go-bootcamp-homework/internal/domain/cart"
 )
 
+// CartRepository struct contains all methods that are forced for  interfae
 type CartRepository struct {
 }
 
-func New() ICartRepository {
-	return &CartRepository{}
-}
-
+// GetCartsByUserID returns all carts of a user from database.
 func (r *CartRepository) GetCartsByUserID(userID uint) ([]cart.Cart, error) {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)
@@ -30,6 +28,7 @@ func (r *CartRepository) GetCartsByUserID(userID uint) ([]cart.Cart, error) {
 	return newCart, nil
 }
 
+// Create creates a new cart in database.
 func (r *CartRepository) Create(newCart cart.Cart) error {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)
@@ -42,6 +41,7 @@ func (r *CartRepository) Create(newCart cart.Cart) error {
 	return nil
 }
 
+// CountByProductID returns count of cart items of a product from database.
 func (r *CartRepository) CountByProductID(productID uint) (int64, error) {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)
@@ -59,6 +59,7 @@ func (r *CartRepository) CountByProductID(productID uint) (int64, error) {
 	return count, nil
 }
 
+//delete cart from database
 func (r *CartRepository) Delete(userID, productID uint) error {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)
@@ -74,6 +75,7 @@ func (r *CartRepository) Delete(userID, productID uint) error {
 	return nil
 }
 
+// Complete orders and set is_completed to true in database.
 func (r *CartRepository) Complete(userID, orderID uint) error {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)

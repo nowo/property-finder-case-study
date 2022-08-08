@@ -5,6 +5,7 @@ import (
 	"property-finder-go-bootcamp-homework/internal/domain/cart/entity_cart"
 )
 
+//Our main aggregate cart
 type Cart struct {
 	gorm.Model
 	CartInfo entity_cart.CartInfo `json:"cart_info" gorm:"embedded;embedded_prefix:cart_info_"`

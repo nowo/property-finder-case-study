@@ -9,12 +9,11 @@ import (
 	domain "property-finder-go-bootcamp-homework/internal/domain/product"
 )
 
+//ProductRepository is a struct that implements the IProductRepository interface.
 type ProductRepository struct {
 }
 
-func New() IProductRepository {
-	return &ProductRepository{}
-}
+//ShowAllProducts returns all products from the database.
 func (r *ProductRepository) ShowAllProducts() ([]domain.Product, error) {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)
@@ -32,6 +31,7 @@ func (r *ProductRepository) ShowAllProducts() ([]domain.Product, error) {
 	return products, nil
 }
 
+//GetProductByID returns a product by its id from the database.
 func (r *ProductRepository) GetProductByID(id uint) (domain.Product, error) {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)
@@ -50,6 +50,7 @@ func (r *ProductRepository) GetProductByID(id uint) (domain.Product, error) {
 	return product, nil
 }
 
+//UpdateProductQuantity updates the quantity of a product from database. it is called when a product is added to cart or when product deleted from cart.
 func (r *ProductRepository) UpdateProductQuantity(id uint, quantity int) error {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)

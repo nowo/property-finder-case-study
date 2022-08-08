@@ -14,6 +14,7 @@ import (
 	"property-finder-go-bootcamp-homework/pkg/validation"
 )
 
+// Register Api handler is responsible for registering a new user it takes register parameters from body
 func RegisterUser(c *fiber.Ctx) error {
 	var userInfo entity_user.UserInfo
 
@@ -38,7 +39,7 @@ func RegisterUser(c *fiber.Ctx) error {
 		})
 	}
 
-	userService := service_user.New(&repository_user.Repository{})
+	userService := service_user.New(&repository_user.UserRepository{})
 	token, registerError := userService.
 		Register(user.User{
 			UserInfo: userInfo,
@@ -58,6 +59,7 @@ func RegisterUser(c *fiber.Ctx) error {
 	})
 }
 
+// Login Api handler is responsible for logging in a user it takes login parameters from body
 func Login(c *fiber.Ctx) error {
 	var userInfo auth.LoginRequest
 	encodeError := json.Unmarshal(c.Body(), &userInfo)
@@ -80,7 +82,7 @@ func Login(c *fiber.Ctx) error {
 		})
 	}
 
-	userService := service_user.New(&repository_user.Repository{})
+	userService := service_user.New(&repository_user.UserRepository{})
 	token, registerError := userService.Login(userInfo)
 	if registerError != nil {
 		logger.Errorf(registerError.Error())

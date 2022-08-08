@@ -13,6 +13,7 @@ import (
 	"strconv"
 )
 
+//Add product to cart api handler. Takes id of product as query parameter. Returns status code 200 if success.
 func AddToCart(c *fiber.Ctx) error {
 	productIDString := c.Query("id")
 	productID, err := strconv.Atoi(productIDString)
@@ -43,6 +44,7 @@ func AddToCart(c *fiber.Ctx) error {
 	})
 }
 
+//Delete product from cart api handler. Takes id of product as query parameter. Returns status code 200 if success.
 func DeleteFromCart(c *fiber.Ctx) error {
 	productIDString := c.Query("id")
 
@@ -73,6 +75,7 @@ func DeleteFromCart(c *fiber.Ctx) error {
 	})
 }
 
+//Get cart api handler. Returns cart list and prices of cart if it success
 func ListCart(c *fiber.Ctx) error {
 	userID := c.Locals("userID").(float64)
 	cartList, listCartError := service_cart.New(&repository_cart.CartRepository{}, &repository_product.ProductRepository{}, &repository_order.OrderRepository{}).GetCartByUserID(uint(userID))

@@ -10,6 +10,7 @@ import (
 	"strconv"
 )
 
+//List all products api handler. Returns products list.
 func ListProducts(c *fiber.Ctx) error {
 	productService := service_product.New(&repository_product.ProductRepository{})
 	products, err := productService.GetAll()
@@ -26,9 +27,9 @@ func ListProducts(c *fiber.Ctx) error {
 		Message: messages.PRODUCT_LIST_SUCCESS,
 		Data:    products,
 	})
-
 }
 
+//Get product by id api handler. Takes id of product as query parameter. Returns product.
 func GetProductByID(c *fiber.Ctx) error {
 	id := c.Query("id")
 	productID, err := strconv.Atoi(id)

@@ -5,7 +5,6 @@ type CustomError struct {
 }
 
 func (c *CustomError) Error() string {
-	//TODO implement me
 	return c.Message
 }
 

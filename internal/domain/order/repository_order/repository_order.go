@@ -9,13 +9,11 @@ import (
 	"time"
 )
 
+// OrderRepository is a struct that implements IOrderRepository interface.
 type OrderRepository struct {
 }
 
-func New() IRepositoryOrder {
-	return &OrderRepository{}
-}
-
+// CreateOrder creates a new order.
 func (repository *OrderRepository) CreateOrder(newOrder order.Order) (order.Order, error) {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)
@@ -24,6 +22,8 @@ func (repository *OrderRepository) CreateOrder(newOrder order.Order) (order.Orde
 	}
 	return newOrder, nil
 }
+
+// GetOrderByUserID returns all orders of a user from database.
 func (repository *OrderRepository) GetOrderByUserID(userID uint) ([]order.Order, error) {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)
@@ -36,6 +36,8 @@ func (repository *OrderRepository) GetOrderByUserID(userID uint) ([]order.Order,
 	}
 	return orders, nil
 }
+
+// GetOrderFromLastMonth returns all orders from last month from database.
 func (repository *OrderRepository) GetOrderFromLastMonth(userID uint) ([]order.Order, error) {
 	db := postgres.ConnectDB()
 	defer postgres.Disconnect(db)

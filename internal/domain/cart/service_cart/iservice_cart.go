@@ -4,6 +4,7 @@ import (
 	"property-finder-go-bootcamp-homework/internal/domain/product"
 )
 
+// ICartService interface contains all methods that are required to implement by service_cart.
 type ICartService interface {
 	AddToCart(userID, productID uint) error
 	DeleteFromCart(userID, productID uint) error

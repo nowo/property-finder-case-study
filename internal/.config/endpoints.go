@@ -10,7 +10,6 @@ var (
 )
 
 const (
-	MAIN_HOST         = "http://localhost"
 	AUTH_ENDPOINT     = "/auth"
 	CART_ENDPOINT     = "/cart"
 	PRODUCT_ENDPOINT  = "/product"

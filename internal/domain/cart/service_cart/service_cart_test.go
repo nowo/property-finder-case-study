@@ -19,7 +19,7 @@ func Test_ProductNotFound(t *testing.T) {
 	Convey("Given that i tried to add unable product to cart ", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
@@ -36,7 +36,7 @@ func Test_AddProductToCart(t *testing.T) {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
 		newCart := cart.NewCart(uint(1), uint(1))
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
@@ -62,7 +62,7 @@ func Test_UserNotFound(t *testing.T) {
 	Convey("Given that i tried to add product to cart with invalid user", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
@@ -79,7 +79,7 @@ func Test_DeleteProductFromCart(t *testing.T) {
 	Convey("Given that i tried to delete product from cart", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
@@ -97,7 +97,7 @@ func Test_CartDeleteFailed(t *testing.T) {
 	Convey("Given that i tried to delete invalid product from cart", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
@@ -118,7 +118,7 @@ func Test_CalculatePriceNoDiscount(t *testing.T) {
 		products := []product.Product{
 			{ProductInfo: entity_product.ProductInfo{Name: "Product", Quantity: 1, Price: 100, Vat: 18}},
 		}
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
@@ -136,7 +136,7 @@ func Test_CalculatePiceApplyAfterThreeProductDiscount(t *testing.T) {
 	Convey("Given user has same product more than three", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
@@ -154,7 +154,7 @@ func Test_CalculatePriceApplyMonthlyDiscount(t *testing.T) {
 	Convey("Given User Passed Given Amount", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)
@@ -174,7 +174,7 @@ func Test_CalculatePriceApplyForthOrderDiscount(t *testing.T) {
 	Convey("Given User Passed Given Amount", t, func() {
 		mockCtrl := gomock.NewController(t)
 		defer mockCtrl.Finish()
-		mockOrderRepository := mocks.NewMockIRepositoryOrder(mockCtrl)
+		mockOrderRepository := mocks.NewMockIOrderRepository(mockCtrl)
 		mockCartRepository := mocks.NewMockICartRepository(mockCtrl)
 		mockProductRepository := mocks.NewMockIProductRepository(mockCtrl)
 		cartService := New(mockCartRepository, mockProductRepository, mockOrderRepository)

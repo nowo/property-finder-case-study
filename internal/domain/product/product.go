@@ -6,6 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
+//Our main aggregate product
 type Product struct {
 	gorm.Model
 	ProductInfo entity_product.ProductInfo `json:"product_info" gorm:"embedded;embedded_prefix:product_info_"`
