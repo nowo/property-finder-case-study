@@ -20,7 +20,7 @@ jobs:
           go-version: 1.18
 
       - name: Build
-        run: make docker-build
+        run: make run
 
       - name: Test
         run:  make run-test  # run-test is a custom command in Makefile

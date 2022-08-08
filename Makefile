@@ -21,3 +21,6 @@ make-mocks:
 	mockgen -source=internal/domain/product/repository_product/irepository_product.go -destination=test_data/mocks/product_repository_mock.go -package=mocks
 	mockgen -source=internal/domain/order/repository_order/irepository_order.go -destination=test_data/mocks/order_repository_mock.go -package=mocks
 	mockgen -source=internal/domain/cart/repository_cart/irepository_cart.go -destination=test_data/mocks/cart_repository_mock.go -package=mocks
+
+make run:
+	docker compose up -d
