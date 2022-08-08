@@ -7,17 +7,10 @@
     <list default="true" id="fa38f25d-57c5-4e70-8b7c-1649619f50d7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.github/workflows/github-actions.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/github-actions.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/configurationCache.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/configurationCache.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/dryrun.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/dryrun.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/targets.log" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/targets.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/server" beforeDir="false" afterPath="$PROJECT_DIR$/build/server" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/cart/service_cart/service_cart_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/order/service_order/service_order_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/order/service_order/service_order_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/product/repository_product/repository_product.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/repository_product/repository_product.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/product/service_product/service_product_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/product/service_product/service_product_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/domain/user/service_user/service_user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/domain/user/service_user/service_user_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/mocks/cart_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/repository_mocks/cart_repository_mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/mocks/order_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/repository_mocks/order_repository_mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/mocks/product_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/repository_mocks/product_repository_mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/mocks/user_repository_mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/repository_mocks/user_repository_mock.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Go File" />
+        <option value="HTTP Request" />
       </list>
     </option>
   </component>
@@ -66,7 +60,8 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/erdal.cinar&quot;
+    &quot;last_opened_file_path&quot;: &quot;/Users/erdal.cinar&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
   }
 }</component>
   <component name="RecentsManager">

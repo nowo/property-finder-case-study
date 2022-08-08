@@ -1,1 +1,1 @@
-{"buildTargets":["docker-build","docker-develop","docker-run","docker-test","run","test"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
+{"buildTargets":["docker-build","docker-develop","docker-run","install-dependencies","make","make-mocks","run","run-test"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

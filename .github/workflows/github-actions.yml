@@ -48,6 +48,6 @@ jobs:
 
       - name: Create Mocks
         run:
-          make make-repository_mocks
+          make make-mocks
       - name: Test
         run:  make run-test  # run-test is a custom command in Makefile

@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sun Aug  7 18:50:01 2022
+# Make data base, printed on Mon Aug  8 22:45:03 2022
 
 # Variables
 
@@ -16,10 +16,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
-# environment
-LC_CTYPE = UTF-8
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -41,7 +37,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_CWD = /Users/erdal.cinar/Downloads/backend-master
+VSCODE_CWD = /
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
@@ -55,7 +51,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.n3VfGZstyb/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.HKDM4wvlBO/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -68,8 +64,6 @@ GOMODCACHE = /Users/erdal.cinar/go/pkg/mod
 HOME = /Users/erdal.cinar
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
-# environment
-VSCODE_CLI = 1
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/erdal.cinar/Library/Application Support/Code/CachedData/da76f93349a72022ca4670c1b84860304616aaa2
 # environment
@@ -84,32 +78,24 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 XPC_FLAGS = 0x0
-# environment
-COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
 # environment
-LC_TERMINAL = iTerm2
-# environment
-SHLVL = 3
+SHLVL = 1
 # default
 MAKE_VERSION := 3.81
 # environment
 USER = erdal.cinar
 # makefile
-.DEFAULT_GOAL := test
-# default
-MAKECMDGOALS := all
-# environment
-TERM_SESSION_ID = w1t0p0:450943DA-E327-4091-9690-9FBB97B00EB0
+.DEFAULT_GOAL := install-dependencies
 # environment
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
-# environment
-TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
 # environment
@@ -127,19 +113,11 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-TERM_PROGRAM_VERSION = 3.4.16
-# environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.85646799.85646805.0A4E5BA1-C4F5-438D-9A37-E537C76544EB
-# environment
-LC_TERMINAL_VERSION = 3.4.16
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.85646799.85646805
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
-# environment
-ITERM_SESSION_ID = w1t0p0:450943DA-E327-4091-9690-9FBB97B00EB0
-# environment
-COLORFGBG = 15;0
 # environment
 __CF_USER_TEXT_ENCODING = 0x371E35B5:0x0:0x0
 # environment
@@ -148,8 +126,6 @@ COMMAND_MODE = unix2003
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
-# environment
-ITERM_PROFILE = Default
 # environment
 PAGER = less
 # environment
@@ -165,11 +141,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-TERM = xterm-256color
-# environment
-VSCODE_PID = 48612
+VSCODE_PID = 11284
 # variable set hash-table stats:
-# Load=78/1024=8%, Rehash=0, Collisions=5/102=5%
+# Load=65/1024=6%, Rehash=0, Collisions=2/89=2%
 
 # Pattern-specific Variable Values
 
@@ -177,7 +151,7 @@ VSCODE_PID = 48612
 
 # Directories
 
-# . (device 16777231, inode 85437445): 23 files, no impossibilities.
+# . (device 16777232, inode 85437445): 23 files, no impossibilities.
 
 # 23 files, no impossibilities in 1 directories.
 
@@ -200,7 +174,7 @@ docker-build:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 8):
+#  commands to execute (from `Makefile', line 12):
 	docker build -t property-finder-case-study-server-1 .
 	
 
@@ -213,26 +187,37 @@ docker-build:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-07 14:28:55
+#  Last modified 2022-08-08 20:06:39
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-test:
+make-mocks:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 2):
-	go test ./...
+#  commands to execute (from `Makefile', line 21):
+	mockgen -source=internal/domain/user/repository_user/repository_user.go -destination=test_data/mocks/user_repository_mock.go -package=mocks
+	mockgen -source=internal/domain/product/repository_product/repository_product.go -destination=test_data/mocks/product_repository_mock.go -package=mocks
+	mockgen -source=internal/domain/order/repository_order/repository_order.go -destination=test_data/mocks/order_repository_mock.go -package=mocks
+	mockgen -source=internal/domain/cart/repository_cart/repository_cart.go -destination=test_data/mocks/cart_repository_mock.go -package=mocks
 	
 
 docker-run:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 11):
+#  commands to execute (from `Makefile', line 15):
 	docker run --name pproperty-finder-case-study-server-1 --env-file ./.env -p 8000:8000 -d property-finder-case-study-server-1
+	
+
+run-test:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 6):
+	gotestsum --format testname
 	
 
 # Not a target:
@@ -241,32 +226,41 @@ docker-run:
 #  Modification time never checked.
 #  File has not been updated.
 
-docker-test:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 17):
-	docker exec -it property-finder-case-study-server-1 go test ./test/... -v
-	
-
 docker-develop:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 14):
+#  commands to execute (from `Makefile', line 18):
 	docker run --name property-finder-case-study-server-1 --env-file ./.env -p 8000:8000 -v `pwd`:`pwd` -w `pwd` -i -t -d property-finder-case-study-server-1
+	
+
+make:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 27):
+	docker compose up -d
 	
 
 run:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 5):
-	go run ./cmd
+#  commands to execute (from `Makefile', line 27):
+	docker compose up -d
+	
+
+install-dependencies:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 2):
+	go install github.com/jstemmer/go-junit-report@latest
+	go install gotest.tools/gotestsum@latest
 	
 
 # files hash-table stats:
-# Load=10/1024=1%, Rehash=0, Collisions=0/22=0%
+# Load=12/1024=1%, Rehash=0, Collisions=0/25=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -278,8 +272,10 @@ run:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Aug  7 18:50:01 2022
+# Finished Make data base on Mon Aug  8 22:45:03 2022
 
  
+Makefile:27: warning: overriding commands for target `run'
+Makefile:9: warning: ignoring old commands for target `run'
 make: *** No rule to make target `all'.  Stop.
 
