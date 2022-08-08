@@ -7,7 +7,6 @@ import (
 
 func ValidateLoginRequest(dto interface{}) error {
 	str := dto.(*auth.LoginRequest)
-
 	return validation.ValidateStruct(str,
 		validation.Field(&str.Email, Email...),
 		validation.Field(&str.Password, Password...),
