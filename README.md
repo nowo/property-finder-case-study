@@ -40,7 +40,7 @@ Project is created with:
 
 
 
-## Setup(#setup)
+## Setup
 ##### To run the project you must add environment file to root of the project
 ##### Environment Variables:
 These environment variables are accepted:
@@ -77,7 +77,7 @@ To run project with docker, type this command. This command will create server a
  $  docker compose up
  ```
 
- ## Test(#test)
+ ## Test
  #### To run tests type these commands sequentially
  ```
  $ make install-dependencies
