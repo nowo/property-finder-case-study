@@ -54,7 +54,7 @@ These environment variables are accepted:
 - JWT_SECRET_KEY
 - PORT
 - GIVEN_AMOUNT
-#### There is no product by default. Because of that you must include product by yourself.  To insert product add this command to <b>connection.go<b> file inside to Migration function
+#### There is no product by default. Because of that you must include product by yourself.  To insert product add this command to <b>connection.go<b> file inside to <b>Migration<b> function for your first run
   ```
         Db.AutoMigrate(&Product{})
         db.Model(&Product{}).AddForeignKey("basket_id", "baskets(id)", "CASCADE", "CASCADE")
