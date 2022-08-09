@@ -6,7 +6,7 @@ This repository is an example of simple basket service with jwt authentication
 ## Table OF Contents
 * [General info](#general-info)
 * [Technologies](#technologies)
-* [Clone the project](#clone)
+* [Clone the project](#clone-the-project)
 * [Setup](#setup)
 * [Test](#test)
 
