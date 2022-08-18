@@ -109,11 +109,11 @@ func (c *CartService) CalculatePrice(cartList []product.Product, userID uint) (f
 	sameProductDiscountPrice, sameProductDiscountVat = c.applySameProductDiscountPrice(cartList)
 	monthlyDiscountPrice, monthlyDiscountVat = c.applyMonthlyDiscountPrice(userID, totalPrice, vatOfCart)
 
-	return getSmallestDiscount(forthOrderDiscountPrice, sameProductDiscountPrice, monthlyDiscountPrice), getSmallestDiscount(forthOrderDiscountVat, sameProductDiscountVat, monthlyDiscountVat)
+	return getSmallestTotalPriceAfterDiscount(forthOrderDiscountPrice, sameProductDiscountPrice, monthlyDiscountPrice), getSmallestTotalPriceAfterDiscount(forthOrderDiscountVat, sameProductDiscountVat, monthlyDiscountVat)
 }
 
 //compare discount prices and return smallest one
-func getSmallestDiscount(discountA, discountB, discountC float64) float64 {
+func getSmallestTotalPriceAfterDiscount(discountA, discountB, discountC float64) float64 {
 	if discountA < discountB {
 		if discountA < discountC {
 			return discountA
